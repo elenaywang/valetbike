@@ -3,7 +3,11 @@
 Smith College CSC223: Software Engineering\
 Starter App for ValetBike project
 
-Team member names: Elena Wang
+
+**Team member names:**
+Elena Wang
+Ying Loo
+
 
 ## Environment Configuration
 
