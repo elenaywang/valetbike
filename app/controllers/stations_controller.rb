@@ -12,5 +12,11 @@ class StationsController < ApplicationController
  
   def log_in
   end
+
+  def help
+  end
+
+  def explore
+  end
   
 end
