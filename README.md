@@ -5,9 +5,10 @@ Starter App for ValetBike project
 
 
 **Team member names:**
-Elena Wang
-Ying Loo
-Maya Gilliom
+Elena Wang,
+Ying Loo,
+Maya Gilliom,
+Lesly Gonzalez,
 
 
 ## Environment Configuration
