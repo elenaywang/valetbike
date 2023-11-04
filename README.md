@@ -9,7 +9,7 @@ Elena Wang,
 Ying Loo,
 Maya Gilliom,
 Lesly Gonzalez,
-
+Chris Dong
 
 ## Environment Configuration
 
