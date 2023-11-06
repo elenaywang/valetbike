@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   #Adding route for the explore page
   match 'explore', to: "stations#explore", via: :get
 
-
+  get 'stations/index'
+  get 'stations/pricing'
+  get 'stations/explore'
+  
 end
