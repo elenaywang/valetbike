@@ -77,6 +77,11 @@ end
 # Developer Added Gems
 gem 'dotenv-rails'
 
+#geocoder8
+gem 'geocoder', '~> 1.8', '>= 1.8.2'
+
+gem 'mapbox-gl-rails'
+
 # Suggested Potentially Useful Gems
 gem 'devise'
 # gem 'httparty'
