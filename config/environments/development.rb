@@ -59,6 +59,13 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # For the Devise mailer: Required default URL options
+  config.action_mailer.default_url_options =  { host: 'localhost', port: 3000 }
+
+  # TODO for the Devise mailer: Turn on when testing mail in development
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
