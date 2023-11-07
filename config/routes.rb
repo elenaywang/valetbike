@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  root to: "stations#index"
+  
+  match 'map', to: "stations#map", via: :get
+
+  # resources:bikes, only: [:map]
+  # resources:stations, only: [:map]
+
+  devise_for :users
   root to: "stations#index"
   
   match 'map', to: "stations#map", via: :get
@@ -24,4 +33,5 @@ Rails.application.routes.draw do
   get 'stations/pricing'
   get 'stations/explore'
   get 'stations/map'
-end
+  get 'bikes/index'
+  get 'bikes/_row'
