@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
   devise_for :users
 
   root to: "stations#index"
@@ -9,6 +10,10 @@ Rails.application.routes.draw do
   # resources:bikes, only: [:map]
   # resources:stations, only: [:map]
  
+=======
+  match 'map', to: "stations#map", via: :get
+
+>>>>>>> dd9a482 (Altered Routes to linke to correct page)
   #Adding route for the pricing page
   match 'pricing', to: "stations#pricing", via: :get
 
@@ -30,5 +35,8 @@ Rails.application.routes.draw do
   get 'stations/map'
   get 'bikes/index'
   get 'bikes/_row'
+<<<<<<< HEAD
   
+=======
+>>>>>>> dd9a482 (Altered Routes to linke to correct page)
 end
