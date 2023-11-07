@@ -4,12 +4,10 @@
       Welcome to Clemenbykes! CiTrust us to get to your Destination...
     </div>  
     <div class="flexbox vertical stretch">
-
-    <p><%= @users.first.username %></p>
     
 
       <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+        <%= render(partial: "stations/row", collection: @stations, as: :station) %> #the partial is stations/_row.html.erb!
         
         <% else %>
       <div class="empty">
