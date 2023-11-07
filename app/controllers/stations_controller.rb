@@ -1,7 +1,14 @@
 class StationsController < ApplicationController
   
   def index
-    @stations = Station.all.order(identifier: :asc)
+  end
+
+  def map
+    if params[:station].present?
+      @stations = Station.near(params[:station])
+    else
+      @stations = Station.all.order(identifier: :asc)
+    end
   end
 
   def pricing
