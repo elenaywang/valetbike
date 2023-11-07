@@ -9,7 +9,13 @@
               <%= link_to('Pricing', {controller: 'stations', action:'pricing'}) %>
             </a>
           </li>
-      
+           
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+          <a class="primary-nav__link type-alpha--s text-color--alpha ">
+            <%= link_to('Map', {controller: 'stations', action:'map'}) %>
+          </a>
+         </li>
+
           <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
             <a class="primary-nav__link type-alpha--s text-color--alpha ">
               <%= link_to('Explore', {controller: 'stations', action:'explore'}) %>
@@ -46,15 +52,6 @@
     <div class="section-title">
       Welcome to Clemenbykes! CiTrust us to get to your Destination...
     </div>  
-
-    <div class="flexbox vertical stretch">
-      <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
-      <div class="empty">
-        No stations found.
-      </div>
-      <% end %>
     </div>
 	</div>
 </div>
