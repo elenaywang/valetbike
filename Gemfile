@@ -80,7 +80,7 @@ gem 'dotenv-rails'
 gem 'mapbox-gl-rails'
 
 # Suggested Potentially Useful Gems
-# gem 'devise'
+gem 'devise'
 # gem 'httparty'
 # gem 'paperclip
 # gem 'uniquify'
