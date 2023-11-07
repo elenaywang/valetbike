@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "stations#index"
 
+  devise_for :users
+
+  root to: "stations#index"
+  
+  match 'map', to: "stations#map", via: :get
+
+  # resources:bikes, only: [:map]
+  # resources:stations, only: [:map]
+ 
   #Adding route for the pricing page
   match 'pricing', to: "stations#pricing", via: :get
 
@@ -17,5 +24,11 @@ Rails.application.routes.draw do
   #Adding route for the explore page
   match 'explore', to: "stations#explore", via: :get
 
-
+  get 'stations/index'
+  get 'stations/pricing'
+  get 'stations/explore'
+  get 'stations/map'
+  get 'bikes/index'
+  get 'bikes/_row'
+  
 end
