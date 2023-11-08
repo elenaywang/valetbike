@@ -1,5 +1,5 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
   <%= station.identifier %>: <%= station.name %> (<%= station.address %>)</div>
   <%= station.docked_bikes.count %> bikes </div>
-  <%= link_to("Rent a bike at this station", '#', class: 'action create') %> 
+  <%= link_to("Rent a bike at this station", {controller: 'rental', action: 'new'}, class: 'action create') %> 
   </div>
