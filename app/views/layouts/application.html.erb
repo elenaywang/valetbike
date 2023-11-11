@@ -10,9 +10,33 @@
     <%= javascript_importmap_tags %>
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
-    <title>ValetBike</title>
+    <title>Clemenbykes</title>
   </head>
-  <body>
+
+ <body>
+<header class> 
+    <div class="layout-container">
+      <div class="header__navigation">
+          <nav class="primary-nav" id="primary-nav" role="navigation">
+              <ul class="primary-nav__list-item show-until-large" >
+                Clemenbykes
+               <a class="primary-nav__link type-alpha--s text-color--alpha ">
+                <%= link_to('Back to Home', {controller: 'home', action:'index'}) %>
+                <%= link_to('Pricing', {controller: 'home', action:'pricing'}) %>
+                <%= link_to('Map', {controller: 'home', action:'map'}) %>
+                <%= link_to('Explore', {controller: 'home', action:'explore'}) %>
+                <%= link_to('Help', {controller: 'home', action:'help'}) %>
+                <%= link_to('Register', {controller: 'home', action:'sign_up'}) %>
+                <%= link_to('Log in', {controller: 'home', action:'log_in'}) %>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+  </header>
+
+
     <div id="site-container" class="flexbox vertical stretch flex-1">
       <div class="flexbox vertical center">
         <% if notice %> <p class="alert alert-success"><%= notice %></p> <% end %> 
@@ -20,5 +44,10 @@
         <%= yield %>
       </div>
     </div>
-  </body>
+
+  <footer>
+    Copyright <%= Time.now.year %>
+  </footer>
+
+</body>
 </html>

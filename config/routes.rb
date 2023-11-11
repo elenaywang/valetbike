@@ -1,30 +1,27 @@
 Rails.application.routes.draw do
 
   devise_for :users
-
-  root to: "stations#index"
+  root to: "home#index"
   
-  match 'map', to: "stations#map", via: :get
+  match 'map', to: "home#map", via: :get
   
   #Adding route for the pricing page
-  match 'pricing', to: "stations#pricing", via: :get
+  match 'pricing', to: "home#pricing", via: :get
 
   #Adding route for the sign up page.
-  match 'sign_up', to: "stations#sign_up", via: :get
+  match 'sign_up', to: "home#sign_up", via: :get
 
   #Adding route for the log in page. 
-  match 'log_in', to: "stations#log_in", via: :get
+  match 'log_in', to: "home#log_in", via: :get
 
   #Adding route for the help page
-  match 'help', to: "stations#help", via: :get
+  match 'help', to: "home#help", via: :get
 
   #Adding route for the explore page
-  match 'explore', to: "stations#explore", via: :get
+  match 'explore', to: "home#explore", via: :get
 
-  get 'stations/index'
-  get 'stations/pricing'
-  get 'stations/explore'
-  get 'stations/map'
-  get 'bikes/index'
-
-end 
+  get 'home/index'
+  get 'home/pricing'
+  get 'home/explore'
+  get 'home/map'
+end
