@@ -57,6 +57,14 @@
 </div>
 <!--End of Original Code -->
 
+<% if user_signed_in? %>
+  <%= link_to current_user.email, edit_user_registration_path %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %>
+  <%= link_to "Register", new_user_registration_path %>
+<% end %>
+
 <!-- Original Big Buttons 
   <ul class="primary-nav__list-item show-until-large" >
     <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
