@@ -1,21 +1,69 @@
-<!--Original Code -->
-<div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      Welcome to Clemenbykes! CiTrust us to get to your Destination...
-    </div>  
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  color: white;
+}
 
-    <% if user_signed_in? %>
-      <div> Welcome <%= current_user.email %>! </div>
-      <%= link_to current_user.email, edit_user_registration_path %>
-      <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-      <%= link_to "Register", new_user_registration_path %>
-    <% end %>
+.split {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 0%;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 
-    </div>
-	</div>
+.left {
+  left: 0;
+  background-color: #ffffff;
+}
+
+.right {
+  right: 0;
+  background-color: #f67f25;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.centered img{
+  max-width: 750px;
+  max-height: 500px;
+  position: static;
+  margin: auto;
+
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="split left">
+  <div class="centered">
+    <h1> Welcome to Clemenbykes! CiTrust us to get to your Destination...</h1>
+  </div>
 </div>
+
+<div class="split right">
+  <div class="centered">
+    <%= image_tag('Clemenbykes stock photo.png') %>
+  </div>
+</div>
+
+
+</body>
+</html> 
+
 
 
