@@ -21,6 +21,7 @@ class RentalsController < ApplicationController
   end
 
   def code
+    #Generates the random code for the user
     @random_number = "%07d" % rand(10000000)
     Rental.create(number: @random_number)
   end
