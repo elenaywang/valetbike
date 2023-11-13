@@ -12,6 +12,9 @@ class RentalsController < ApplicationController
  
   def create
     @rental = Rental.new(rental_params)
+    #Rental.code
+    @random_number = "%07d" % rand(10000000)
+    @rental.number = @random_number
     if @rental.save
       redirect_to rentals_path 
     else 
