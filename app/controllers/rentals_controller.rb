@@ -9,7 +9,7 @@ class RentalsController < ApplicationController
     #@time = DateTime.now
     #sth like this too @user = User.loggedIn
   end
-
+ 
   def create
     @rental = Rental.new(rental_params)
     if @rental.save
@@ -34,7 +34,9 @@ class RentalsController < ApplicationController
   end
 
   def code
-
+    #Generates the random code for the user
+    @random_number = "%07d" % rand(10000000)
+    Rental.create(number: @random_number)
   end
 
   private
