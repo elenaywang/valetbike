@@ -1,0 +1,21 @@
+<!--Original Code -->
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+      Welcome to Clemenbykes! CiTrust us to get to your Destination...
+    </div>  
+
+    <% if user_signed_in? %>
+      <div> Welcome <%= current_user.email %>! </div>
+      <%= link_to current_user.email, edit_user_registration_path %>
+      <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Register", new_user_registration_path %>
+    <% end %>
+
+    </div>
+	</div>
+</div>
+
+
