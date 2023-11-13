@@ -1,0 +1,103 @@
+<header class="header background-color--white"> 
+  <div class="layout-container">
+    <div class="header__navigation">
+      <nav class="primary-nav" id="primary-nav" role="navigation">
+      <!--Links in the headers -->
+        <ul class="primary-nav__list-item show-until-large" >
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+            <a class="primary-nav__link type-alpha--s text-color--alpha ">
+              <%= link_to('Pricing', {controller: 'stations', action:'pricing'}) %>
+            </a>
+          </li>
+           
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+          <a class="primary-nav__link type-alpha--s text-color--alpha ">
+            <%= link_to('Map', {controller: 'stations', action:'map'}) %>
+          </a>
+         </li>
+
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+            <a class="primary-nav__link type-alpha--s text-color--alpha ">
+              <%= link_to('Explore', {controller: 'stations', action:'explore'}) %>
+            </a>
+          </li>
+      
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+            <a class="primary-nav__link type-alpha--s text-color--alpha ">
+              <%= link_to('Help', {controller: 'stations', action:'help'}) %>
+            </a>
+          </li>
+      
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+            <a class="primary-nav__link type-alpha--s text-color--alpha ">
+              <%= link_to('Register', {controller: 'stations', action:'sign_up'}) %>
+            </a>
+          </li>
+      
+          <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+            <a class="primary-nav__link type-alpha--s text-color--alpha ">
+              <%= link_to('Log in', {controller: 'stations', action:'log_in'}) %>
+            </a>
+            <!--End of Links in the headers -->
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!--Original Code -->
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+      Welcome to Clemenbykes! CiTrust us to get to your Destination...
+    </div>  
+    </div>
+	</div>
+</div>
+<!--End of Original Code -->
+
+<% if user_signed_in? %>
+  <%= link_to current_user.email, edit_user_registration_path %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %>
+  <%= link_to "Register", new_user_registration_path %>
+<% end %>
+
+<!-- Original Big Buttons 
+  <ul class="primary-nav__list-item show-until-large" >
+    <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+      <a class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+        <%= link_to('Pricing', {controller: 'stations', action:'pricing'}) %>
+      </a>
+    </li>
+
+    <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+      <a class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+        <%= link_to('Explore', {controller: 'stations', action:'explore'}) %>
+      </a>
+    </li>
+
+    <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+      <a class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+        <%= link_to('Help', {controller: 'stations', action:'help'}) %>
+      </a>
+    </li>
+
+    <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+      <a class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+        <%= link_to('Register', {controller: 'stations', action:'sign_up'}) %>
+      </a>
+    </li>
+  
+
+    <li class="primary-nav__list-item relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+      <a class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+        <%= link_to('Log in', {controller: 'stations', action:'log_in'}) %>
+      </a>
+    </li>
+  </ul>
+
+  End Buttons -->
+
