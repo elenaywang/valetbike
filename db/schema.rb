@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_13_162708) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_221221) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rentals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "borrower_id"
-    t.integer "bike_id"
-    t.datetime "checkout"
-    t.datetime "return"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,14 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_162708) do
     t.integer "current_rental_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "username"
-    t.integer "current_rental_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "used_one_time_codes"
   end
 
 end
