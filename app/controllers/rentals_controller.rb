@@ -36,12 +36,6 @@ class RentalsController < ApplicationController
     end
   end
 
-  def code
-    #Generates the random code for the user
-    @random_number = "%07d" % rand(10000000)
-    Rental.create(number: @random_number)
-  end
-
   private
   def rental_params
     params.require(:rental).permit(:checkout, :bike_id)
