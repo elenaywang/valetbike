@@ -12,10 +12,13 @@
 
   <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
 
-    <%= form.datetime_local_field :checkout %>
+    <%= render(partial: 'form', locals: {form: form}) %>
+    
+    <div> class="form-buttons">
+      <%= form.submit "Submit rental" %>
+    </div>
 
-    <%= form.submit "Create" %>
-    <% end %>
+  <% end %>
 </div>
 
 

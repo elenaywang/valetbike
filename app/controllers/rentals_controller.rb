@@ -1,4 +1,8 @@
 class RentalsController < ApplicationController
+  def index
+    @rentals = Rental.order(:checkout)
+  end
+  
   def new
     #@stations = Station.all #eventaully change to...the chosen station?
     @rental = Rental.new
@@ -7,21 +11,34 @@ class RentalsController < ApplicationController
   end
 
   def create
-    @rental = Rental.new(params.require(:rental).permit(:datetime_local_field))
-    Rails.logger.debug "calling create"
+    @rental = Rental.new(rental_params)
     if @rental.save
-      redirect_to @rental, notice: "rental was successfully submitted"
+      redirect_to rentals_path 
     else 
-      #eventually need to change this to give you the form again and tell you to fix it
-      redirect_to stations_path
+      #eventually need to tell you to fix error
+      render('new')
     end
   end
 
   def edit
+    @rental = Rental.find(params[:id])
+  end
 
+  def update
+    @rental = Rental.find(params[:id])
+    if @rental.update(rental_params)
+      redirect_to rental_path(@rental)
+    else
+      render('edit')
+    end
   end
 
   def code
 
+  end
+
+  private
+  def rental_params
+    params.require(:rental).permit(:checkout, :bike_id)
   end
 end
