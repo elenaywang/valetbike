@@ -9,14 +9,14 @@
 
 <div class="rental new">
   <h2>New Rental</h2>
-
   <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
 
     <%= form.datetime_local_field :checkout %>
 
-    <%= form.submit "Create" %>
-    <% end %>
+    <%= form.submit "Rent"%>
+  <% end %>
+
 </div>
 
 
-
+<%= link_to('Generate code', {controller: 'rentals', action:'code'}) %>

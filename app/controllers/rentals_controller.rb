@@ -5,7 +5,7 @@ class RentalsController < ApplicationController
     #@time = DateTime.now
     #sth like this too @user = User.loggedIn
   end
-
+ 
   def create
     @rental = Rental.new(params.require(:rental).permit(:datetime_local_field))
     Rails.logger.debug "calling create"
@@ -18,10 +18,14 @@ class RentalsController < ApplicationController
   end
 
   def edit
-
   end
 
   def code
-
+    #Generates the random code for the user
+    @random_number = "%07d" % rand(10000000)
+    Rental.create(number: @random_number)
   end
+
+
+
 end
