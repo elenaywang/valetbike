@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   resources :rentals
   root to: "stations#index"
   resources :stations
+
+  #Adding route for the pricing page
+  match 'code', to: "rentals#code", via: :get
+
+
+
 end

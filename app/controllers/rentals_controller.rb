@@ -18,10 +18,13 @@ class RentalsController < ApplicationController
   end
 
   def edit
-
   end
 
   def code
-
+    @random_number = "%07d" % rand(10000000)
+    Rental.create(number: @random_number)
   end
+
+
+
 end

@@ -2,3 +2,13 @@
   <h1 class="font-bold text-4xl">Rental#save</h1>
   <p>Find me in app/views/rental/code.html.erb</p>
 </div>
+
+<h1>Random Six-Digit Number:</h1>
+    <p><%= @random_number %></p>
+
+<h2>Stored Numbers: For testing puposes</h2>
+    <ul>
+      <% Rental.all.each do |rental| %>
+        <li><%= rental.number %></li>
+      <% end %>
+    </ul>
