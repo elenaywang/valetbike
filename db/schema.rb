@@ -25,6 +25,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_162708) do
     t.datetime "return"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rentals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "borrower_id"
+    t.integer "bike_id"
+    t.datetime "checkout"
+    t.datetime "return"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "number"
   end
 
@@ -32,6 +41,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_162708) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "username"
+    t.integer "current_rental_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
