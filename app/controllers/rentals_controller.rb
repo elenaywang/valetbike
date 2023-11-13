@@ -5,7 +5,7 @@ class RentalsController < ApplicationController
     #@time = DateTime.now
     #sth like this too @user = User.loggedIn
   end
-
+ 
   def create
     @rental = Rental.new(params.require(:rental).permit(:datetime_local_field))
     Rails.logger.debug "calling create"
