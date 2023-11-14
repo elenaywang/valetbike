@@ -1,3 +1,4 @@
+
 # task imports station data from a csv file 
 # use before importing bike data
 # rake db:import_stations["notes/station-data.csv"]
@@ -13,11 +14,14 @@ namespace :db do
 
         CSV.parse(File.read(args[:filename]), headers: true).each do |row|
             puts "Importing: #{row.to_hash["identifier"]}\n"
+
             import_station(row.to_hash)
         end
     end
 
+  
     def import_station(item)
+      
         station = Station.new({identifier: item ["identifier", name: item["name"], address: item["address"]]})
 
         if station.save
@@ -28,3 +32,4 @@ namespace :db do
     end
 
 end
+

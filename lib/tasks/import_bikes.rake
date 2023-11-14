@@ -1,3 +1,4 @@
+
 # rake db:import_bikes["notes/bike-data.csv"]
 namespace :db do
     desc "Import bike data from csv file"
@@ -8,6 +9,7 @@ namespace :db do
 
         CSV.parse(File.read(args[:filename]), headers: true).each do |row|
             puts "Importing: Bike #{row.to_hash["identifier"]}\n"
+
             import_bike(row.to_hash)
         end
     end
@@ -20,6 +22,7 @@ namespace :db do
             puts "Successfully imported: Bike #{item["identifier"]}\n"
         else
             puts "Failed tp import: Bike #{item["identifier"]}\n"
+
         end
     end
 end

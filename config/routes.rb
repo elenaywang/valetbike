@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  # get 'rental/new' #, to 'rental#new', as 'rental'
+  # get 'rental/create'
+  # get 'rental/code'
+  resources :rentals
+  resources :stations
+
+
   devise_for :users
   root to: "home#index"
   
@@ -20,8 +27,10 @@ Rails.application.routes.draw do
   #Adding route for the explore page
   match 'explore', to: "home#explore", via: :get
 
+
   get 'home/index'
   get 'home/pricing'
   get 'home/explore'
   get 'home/map'
+
 end
