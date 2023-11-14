@@ -24,8 +24,13 @@
           <li><%= link_to('Map', {controller: '/home', action:'map'}) %></li>
           <li><%= link_to('Explore', {controller: '/home', action:'explore'}) %></li>
           <li><%= link_to('Help', {controller: '/home', action:'help'}) %></li>
-          <li><%= link_to('Register', {controller: '/home', action:'sign_up'}) %></li>
-          <li><%= link_to('Log in', {controller: '/home', action:'log_in'}) %></li>
+          <% if user_signed_in? %>
+             <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li> <%= button_to "Sign out ", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+              <li><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
         </ul>  
       </nav>
     </div>
