@@ -48,9 +48,12 @@
     </div>  
 
     <div class="flexbox vertical stretch">
+    
+
       <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
+        <%= render(partial: "stations/row", collection: @stations, as: :station) %> #the partial is stations/_row.html.erb!
+        
+        <% else %>
       <div class="empty">
         No stations found.
       </div>
