@@ -1,0 +1,32 @@
+<div>
+  <h1 class="font-bold text-4xl">Rental#index</h1>
+  <p>Find me in app/views/rental/index.html.erb</p>
+</div>
+
+<%= link_to("Need some menu here", '#') %>
+
+<div class="rentals index">
+  <h2>Rentals!</h2>
+
+  <table class="listing" summary="Rental list" style="width: 100%;">
+    <tr class="header">
+      <th>Checkout time</th>
+      <th>Return time</th>
+      <th>Station</th>
+      <th>Bike id</th>
+      <th>Rental code</th>
+    </tr>
+    <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.checkout %></td>
+      <td><%= rental.return %></td>
+      <td><%= rental.bike_id %></td>
+      <td><%= rental.number %></td>
+      <td class="actions">
+        <%= link_to("Edit", edit_rental_path(rental), class: 'action edit') %>
+        <%= link_to("Cancel", '#', class: 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
