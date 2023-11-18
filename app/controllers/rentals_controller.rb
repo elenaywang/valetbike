@@ -23,6 +23,14 @@ class RentalsController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
+  def return_bike
+    
+  end
+
   def edit
     @rental = Rental.find(params[:id])
   end
