@@ -5,8 +5,8 @@ class RentalsController < ApplicationController
   
   def new
     @station = Station.find(params[:station_id])
-    @rental = Rental.new
-    #@time = DateTime.now
+    @rental = Rental.new(checkout: DateTime.now, station_id: @station.id) 
+  
     #sth like this too @user = User.loggedIn
   end
  
@@ -38,6 +38,6 @@ class RentalsController < ApplicationController
 
   private
   def rental_params
-    params.require(:rental).permit(:checkout, :bike_id)
+    params.require(:rental).permit(:checkout, :station_id)
   end
 end
