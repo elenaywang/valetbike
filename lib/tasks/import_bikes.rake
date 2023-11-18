@@ -1,4 +1,4 @@
-
+# to import bike data, run the following command in your terminal:
 # rake db:import_bikes["notes/bike-data.csv"]
 namespace :db do
     desc "Import bike data from csv file"
@@ -22,7 +22,6 @@ namespace :db do
             puts "Successfully imported: Bike #{item["identifier"]}\n"
         else
             puts "Failed tp import: Bike #{item["identifier"]}\n"
-
         end
     end
 end
