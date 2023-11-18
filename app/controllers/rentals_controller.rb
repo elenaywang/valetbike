@@ -4,7 +4,7 @@ class RentalsController < ApplicationController
   end
   
   def new
-    #@stations = Station.all #eventaully change to...the chosen station?
+    @station = Station.find(params[:station_id])
     @rental = Rental.new
     #@time = DateTime.now
     #sth like this too @user = User.loggedIn
