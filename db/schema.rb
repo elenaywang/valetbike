@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_162708) do
   create_table "rentals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "borrower_id"
     t.integer "bike_id"
+    t.integer "station_id"
     t.datetime "checkout"
     t.datetime "return"
     t.datetime "created_at", null: false
