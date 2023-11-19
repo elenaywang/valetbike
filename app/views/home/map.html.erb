@@ -53,6 +53,25 @@
   .addTo(map); 
 <%end%> 
 </script>
+
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+      Welcome to Clemenbykes! CiTrust us to get to your Destination...
+    </div>  
+    <div class="flexbox vertical stretch">
+
+      <% if @stations.present? %>
+        <%= render(partial: "home/row", collection: @stations, as: :station) %>
+      <% else %>
+        <div class="empty">
+        No stations found.
+      </div>
+      <% end %>
+    </div>
+	</div>
+</div>
+
 </body>
 </html>
 

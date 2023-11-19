@@ -9,11 +9,13 @@
 
 <div class="rental new">
   <h2>New Rental</h2>
+  
   <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
 
-    <%= render(partial: 'form', locals: {form: form}) %>
+    <%= form.datetime_local_field :checkout %>
+    <%= form.select :station_id, Station.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
     
-    <div> class="form-buttons">
+    <div class="form-buttons">
       <%= form.submit "Submit rental" %>
     </div>
 
