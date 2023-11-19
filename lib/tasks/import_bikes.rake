@@ -21,7 +21,7 @@ namespace :db do
         if bike.save
             puts "Successfully imported: Bike #{item["identifier"]}\n"
         else
-            puts "Failed tp import: Bike #{item["identifier"]}\n"
+            puts "Failed to import: Bike #{item["identifier"]}\n"
         end
     end
 end
