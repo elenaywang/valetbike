@@ -6,17 +6,15 @@ class RentalsController < ApplicationController
   def new
     @station = Station.find(params[:station_id])
     @rental = Rental.new(checkout: DateTime.now, station_id: @station.id) 
-  
     #sth like this too @user = User.loggedIn
   end
  
   def create
     @rental = Rental.new(rental_params)
-    #Rental.code
     @random_number = "%07d" % rand(10000000)
     @rental.number = @random_number
     if @rental.save
-      redirect_to rentals_path 
+      redirect_to rental_path(@rental)
     else 
       #eventually need to tell you to fix error
       render('new')
@@ -24,7 +22,7 @@ class RentalsController < ApplicationController
   end
 
   def show
-    
+    @rental = Rental.find(params[:id])
   end
 
   def return_bike
@@ -46,6 +44,6 @@ class RentalsController < ApplicationController
 
   private
   def rental_params
-    params.require(:rental).permit(:checkout, :station_id)
+    params.require(:rental).permit(:checkout, :station_id, :return)
   end
 end
