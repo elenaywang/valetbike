@@ -16,7 +16,7 @@
     <%= form.select :station_id, Station.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
     
     <div class="form-buttons">
-      <%= form.submit "Submit rental" %>
+      <%= form.submit "Rent now!" %>
     </div>
 
   <% end %>
