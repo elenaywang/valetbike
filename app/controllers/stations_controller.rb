@@ -5,3 +5,4 @@ class StationsController < ApplicationController
   end
   
 end
+
