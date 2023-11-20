@@ -19,8 +19,10 @@ body {
 
 .left {
   left: 0;
-  background-color: #ffffff;
+  background-color: #fffff;
 }
+
+
 
 .right {
   right: 0;
@@ -38,10 +40,8 @@ body {
 
 .centered img{
   max-width: 750px;
-  max-height: 500px;
-  position: static;
+  max-height: 750px;
   margin: auto;
-
 }
 
 
@@ -49,17 +49,52 @@ body {
 </head>
 <body>
 
+    
 <div class="split left">
-  <div class="centered">
-    <h1> Welcome to ClemenBykes! CiTrust us to get to your Destination...</h1>
-  </div>
-</div>
+  <div class="page-section flexbox vertical stretch">
+    <div class="section-inner flexbox vertical stretch" style= "margin-right: 5em;
+    margin-left: 5em;">
+      <div class="section-title flexbox horizontal center">
+            <h1>CiTrust us to get to your destination!</h1>
+         </div>
+        <p> With stations across Amherst, Northampton, Hampshire, and Springfield, perform errands with ease or have fun exploring scenic bike routes!</p>
+        <%= link_to('Rent a Bike Now', ) %>
+        </div>
+      </div>
+    </div>
+    <div class="split right">
+      <div class="centered" style = "overflow-y:hidden;">
+        <%= image_tag('Clemenbykes stock photo.png') %>
+      </div>
+    </div>
 
-<div class="split right">
-  <div class="centered">
-    <%= image_tag('Clemenbykes stock photo.png') %>
+<div class="page-section flexbox vertical stretch" style= "margin-top: 400px;">
+  <div class="section-inner flexbox vertical stretch">
+      <div class="section-title flexbox horizontal center">
+          How It Works
+        </div>
+          <div class="container" style= "text-align: center;">
+            <div class="row">
+              <div class="column">
+                    <h1>Step 1 </h1>
+                    <h2>Get Code </h2>
+              </div>
+              <div class="column">
+                  <h1>Step 2</h1>
+                  <h2>Unlock</h2>
+              </div>
+              <div class="column">
+                  <h1>Step 3</h1>
+                  <h2>Ride</h2>
+              </div>
+              <div class="column">
+                  <h1>Step 4</h1>
+                  <h2>Return</h2>
+              </div>    
+            </div>
+          </div>
+    </div>
   </div>
-</div>
 
 
 </body>

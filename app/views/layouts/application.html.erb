@@ -16,21 +16,20 @@
 <body>
 <header>
   <div class= "container">
-    <%= image_tag('clemenbykes_logo', alt: 'logo', class: 'logo' ) %>
+    <%= link_to(image_tag('clemenbykes_logo_light.png', alt: 'logo', class: 'logo', width: '225px'),home_index_path) %>
     <nav>
       <ul>
-          <li><%= link_to('Back to Home', {controller: '/home', action:'index'}, class: 'push') %></li>
-          <li><%= link_to('Pricing', {controller: '/home', action:'pricing'}) %></li>
-          <li><%= link_to('Map', {controller: '/home', action:'map'}) %></li>
-          <li><%= link_to('Explore', {controller: '/home', action:'explore'}) %></li>
-          <li><%= link_to('Help', {controller: '/home', action:'help'}) %></li>
-            <% if user_signed_in? %>
-              <li><%= link_to current_user.email, edit_user_registration_path %></li>
-              <li> <%= button_to "Sign out ", destroy_user_session_path, :method => :delete %></li>
-            <% else %>
-              <li><%= link_to "Register", new_user_registration_path %></li>
-              <li><%= link_to "Sign in", new_user_session_path %></li>
-            <% end %>
+          <li><%= link_to('Explore', explore_home_index_path) %>
+          <li><%= link_to('Map', map_home_index_path ) %></li>
+          </li><li><%= link_to('Pricing', pricing_home_index_path) %></li>
+          <li><%= link_to('Help', help_home_index_path) %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li> <%= button_to "Sign out ", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to("Register", new_user_registration_path) %></li>
+            <li><%= link_to("Sign in", new_user_session_path) %></li>
+          <% end %>
         </ul>  
       </nav>
     </div>
@@ -47,7 +46,8 @@
 
 <footer>
   <ul>
-  <li> Copyright <%= Time.now.year %></li>
+    <li > Contact Us </li>
+    <li> Copyright © <%= Time.now.year %></li> 
   </ul>
 </footer>
 
