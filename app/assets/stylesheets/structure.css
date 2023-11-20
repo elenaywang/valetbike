@@ -8,6 +8,25 @@ header {
     clear: both;
   }
 
+.button{
+    display: block;
+    color: white;
+    background-color: #78a350;
+    text-align: center;
+    padding: 8px;
+    margin-right: 350px;
+    margin-top: 40px;
+}S
+
+.button form:hover {
+    background-color: #59882d;
+}
+
+.button a:hover {
+    background-color: #59882d;
+}
+ 
+
 .container{
     width: 100%;
     margin: 0 auto;
@@ -17,12 +36,12 @@ header {
 
 .row {
     display: flex;
-    gap: 50px; 
+    gap: 40px; 
     margin-bottom: 30px;
 }
 
 .column{
-    background-color: #ff873c;
+    background-color: #78a350;
     color: white;
     padding: 1em;
     flex: 1;
@@ -55,7 +74,7 @@ ul li {
     margin: 0;
 }
   
-nav ul li a {
+ul li a {
     display: block;
     color: white;
     float: right;
@@ -64,7 +83,7 @@ nav ul li a {
     text-decoration: none;
 }
 
-nav ul form {
+ul form {
     display: block;
     color: white;
     float: right;
