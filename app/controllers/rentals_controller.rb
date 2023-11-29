@@ -13,6 +13,9 @@ class RentalsController < ApplicationController
     @random_number = "%07d" % rand(10000000)
     @rental.number = @random_number
     @rental.borrower_id = current_user.id
+    #@rental.bike_id = Bike. first available bike? 
+    #so we'd need a ruby loop that checks ea bike to see if there is a rental that owns it at that time? 
+    #maybe at first we can not worry about scheduling and just do current rentals at current time.
     if @rental.save
       redirect_to rental_path(@rental)
     else 
