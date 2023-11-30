@@ -1,4 +1,6 @@
 class RentalsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @rentals = Rental.order(:checkout)
   end
@@ -6,8 +8,6 @@ class RentalsController < ApplicationController
   def new
     @station = Station.find(params[:station_id])
     @rental = Rental.new(checkout: DateTime.now, station_id: @station.id) 
-  
-    #sth like this too @user = User.loggedIn
   end
  
   def create
@@ -15,6 +15,7 @@ class RentalsController < ApplicationController
     #Rental.code
     @random_number = "%07d" % rand(10000000)
     @rental.number = @random_number
+    @rental.borrower_id = current_user.id
     if @rental.save
       redirect_to rentals_path 
     else 
