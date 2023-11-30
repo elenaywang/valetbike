@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  # get 'rental/new' #, to 'rental#new', as 'rental'
-  # get 'rental/create'
-  # get 'rental/code'
   resources :rentals
-  resources :stations
+  resources :stations do 
+    resources :rentals, only: [:new, :create]
+  end
   
   resources :home do
     collection do
@@ -14,6 +13,8 @@ Rails.application.routes.draw do
       get 'help'
     end
   end
+  
+
 
   devise_for :users
 
