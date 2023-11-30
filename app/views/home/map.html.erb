@@ -6,9 +6,9 @@
     <title>Display a map on a webpage</title>
       <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans"rel="stylesheet"/>
-      <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-      <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
-      <style>s
+      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+      <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+      <style>
         body { 
           margin: 0; 
           padding: 0; 
@@ -33,16 +33,16 @@
 
 <div id="map"></div>
 
+
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
-    const map = new mapboxgl.Map({
+	  mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
+    var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
     center: [-72.64, 42.325], // starting position [lng, lat]
     zoom: 11.5 // starting zoom
   });
   
-  //iterates all stations, creating new location marker for each using longitude and latitude attributes 
   <% @stations.each do |station| %>
     new mapboxgl.Marker({color: 'orange'})
       .setLngLat([<%= station.longitude %>, <%= station.latitude %>])
@@ -54,23 +54,40 @@
 <%end%> 
 </script>
 
-<div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      Welcome to Clemenbykes! CiTrust us to get to your Destination...
-    </div>  
-    <div class="flexbox vertical stretch">
 
-      <% if @stations.present? %>
-        <%= render(partial: "home/row", collection: @stations, as: :station) %>
-      <% else %>
-        <div class="empty">
-        No stations found.
-      </div>
-      <% end %>
+
+<div id="mapSidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <% if @stations.present? %>
+      <%= render(partial: "home/row", collection: @stations, as: :station) %>
+    <% else %>
+    <div class="empty">
+      No stations found.
     </div>
-	</div>
+  <% end %>
 </div>
+
+<div>
+  <button class="openbtn" onclick="openNav()">&#9776; View Stations </button>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mapSidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mapSidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+</script>
+
+
+
+
+
 
 </body>
 </html>

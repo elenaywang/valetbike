@@ -31,5 +31,5 @@ body {
   font-family: var(--body-font);
   font-weight: 400;
   color: var(--black-color);
-  background: var(--white-color);
+  background: color(#fafdeb)
 }
