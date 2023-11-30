@@ -3,7 +3,9 @@ class RentalsController < ApplicationController
   before_action :set_station, only: [:create]
 
   def index
-    @rentals = Rental.order(:checkout)
+    # users_rentals = Rental.where(borrower_id: current_user.id)
+    # @rentals = users_rentals.order(:checkout)
+    @rentals = current_user.rentals
   end
   
   def new
@@ -16,19 +18,21 @@ class RentalsController < ApplicationController
     @rental.number = @random_number
     @rental.borrower_id = current_user.id
     @rental.station_id = @station.id
-    #@rental.bike_id = 
 
     bikes_at_station = Bike.where(current_station_id: @station.id)
     @rental.bike_id = bikes_at_station.first.id
-
-    #bikes at that station = Bike. findby that station  
-    #and then loop over the bikes {to find the first that isn't in use.}
+    
+   
+    #and then loop over the bikes_at_station {to find the first that isn't in use:
+    #   if bike belongs to a rental (bike.)}
     #and then make that bike's station null.
 
     #so we'd need a ruby loop that checks ea bike to see if there is a rental that owns it at that time? 
     #maybe at first we can not worry about scheduling and just do current rentals at current time.
     if @rental.save
       redirect_to rental_path(@rental)
+      @bike = @rental.bike
+      @bike.update(current_station_id: nil)
     else 
       #eventually need to tell you to fix error
       render('new')
