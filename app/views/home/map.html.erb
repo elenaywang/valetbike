@@ -6,8 +6,8 @@
     <title>Display a map on a webpage</title>
       <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans"rel="stylesheet"/>
-      <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-      <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+      <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
       <style>
         body { 
           margin: 0; 
@@ -36,7 +36,7 @@
 
 <script>
 	  mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
-    const map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
     center: [-72.64, 42.325], // starting position [lng, lat]
