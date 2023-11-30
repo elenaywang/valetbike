@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :rentals
-  resources :stations
+  resources :stations do 
+    resources :rentals, only: [:new, :create]
+  end
 
 
   devise_for :users

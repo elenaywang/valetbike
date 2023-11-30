@@ -1,11 +1,13 @@
 class RentalsController < ApplicationController
+  # before_action :require_login
+  before_action :set_station, only: [:create]
+
   def index
     @rentals = Rental.order(:checkout)
   end
   
   def new
-    @station = Station.find(params[:station_id])
-    @rental = Rental.new(checkout: DateTime.now, station_id: @station.id) 
+    @rental = Rental.new(checkout: DateTime.now) 
   end
  
   def create
@@ -13,7 +15,16 @@ class RentalsController < ApplicationController
     @random_number = "%07d" % rand(10000000)
     @rental.number = @random_number
     @rental.borrower_id = current_user.id
-    #@rental.bike_id = Bike. first available bike? 
+    @rental.station_id = @station.id
+    #@rental.bike_id = 
+
+    bikes_at_station = Bike.where(current_station_id: @station.id)
+    @rental.bike_id = bikes_at_station.first.id
+
+    #bikes at that station = Bike. findby that station  
+    #and then loop over the bikes {to find the first that isn't in use.}
+    #and then make that bike's station null.
+
     #so we'd need a ruby loop that checks ea bike to see if there is a rental that owns it at that time? 
     #maybe at first we can not worry about scheduling and just do current rentals at current time.
     if @rental.save
@@ -49,4 +60,16 @@ class RentalsController < ApplicationController
   def rental_params
     params.require(:rental).permit(:checkout, :station_id, :return)
   end
+
+  def set_station
+    @station = Station.find(params[:station_id])
+  end
+
+  # def require_login
+  #   unless logged_in?
+  #     flash[:error] = "You must be logged in to access this section"
+  #     redirect_to new_login_url 
+  #   end
+  # end
+
 end
