@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   # get 'rental/code'
   resources :rentals
   resources :stations
-
+  #resources :payments
 
   devise_for :users
+
+  resources :users do
+    resources :payments
+  end
+
   root to: "home#index"
   
   match 'map', to: "home#map", via: :get
