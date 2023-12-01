@@ -1,5 +1,5 @@
 <div>
-  <h1 class="font-bold text-4xl">Rental#index</h1>
+  <h1 class="font-bold text-4xl">Your Rentals</h1>
   <p>Find me in app/views/rental/index.html.erb</p>
 </div>
 
@@ -15,7 +15,7 @@
     </tr>
     <% @rentals.each do |rental| %>
     <tr>
-      <td><%= rental.checkout.to_fs(:long_ordinal) %></td>
+      <td><%= rental.checkout%></td> 
       <td><%= rental.return %></td>
       <td><%= rental.station_id %></td>
       <td><%= rental.bike_id %></td>
@@ -23,6 +23,7 @@
       <td class="actions">
         <%= link_to("Edit", edit_rental_path(rental), class: 'action edit') %>
         <%= link_to("Cancel", '#', class: 'action delete') %>
+        <%= link_to("Return Bike", '#') %>
       </td>
     </tr>
     <% end %>

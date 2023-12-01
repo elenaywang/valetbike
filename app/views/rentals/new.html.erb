@@ -1,24 +1,22 @@
-<div>
-  <h1 class="font-bold text-4xl">Rental#new</h1>
-  
-  
-  
-</div>
-
-
-
-<div class="rental new">
-  <h2>New Rental</h2>
-  
+<div class="page-section flexbox vertical stretch">
+        <div class="section-inner flexbox vertical stretch">
+            <div class="section-title flexbox horizontal center" style = "text-align: center">
+    <div class="rental new">
+  <h2>Create New Bike Rental</h2>
+  </div> 
+  </div>
+  </div>
+  </div>
   <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
 
     <%= form.datetime_local_field :checkout %>
-    <%= form.select :station_id, Station.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
     
     <div class="form-buttons">
-      <%= form.submit "Submit rental" %>
+      <%= form.submit "Rent now!" %>
     </div>
 
   <% end %>
 </div>
+
+    
 

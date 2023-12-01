@@ -13,12 +13,6 @@ class HomeController < ApplicationController
     def pricing
     end
   
-    def sign_up
-    end
-   
-    def log_in
-    end
-  
     def help
     end
   
