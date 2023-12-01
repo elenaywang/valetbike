@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+    #validators for form input here
+
     # def index
     #     @payment = Payment.order(:first_name)
     # end
@@ -18,14 +20,28 @@ class PaymentsController < ApplicationController
         @payment = Payment.new(payment_params) 
         @payment.user_id = params[:user_id]
             if @payment.save
-                puts @payment.id
+                flash.notice = "Payment information saved"
                 current_user.update_column(:payment_id, @payment.id)
                 redirect_to user_payments_path
             else
+                flash.alert = "Unable to save payment information"
                 render('new')
             end
         else
             redirect_to user_payments_path
+        end
+    end
+
+    def edit
+        @payment = Payment.find_by(user_id: current_user.id)
+    end
+
+    def update
+        @payment = Payment.find_by(user_id: current_user.id)
+        if @payment.update(payment_params)
+            redirect_to user_payments_path
+        else
+            render ('edit')
         end
     end
 
@@ -35,19 +51,3 @@ class PaymentsController < ApplicationController
     end
 
 end
-  
-
-# #   def edit
-# #     @payment = Payment.find(params[:id])
-# #   end
-
-# #   def update
-# #     @payment = Payment.find(params[:id])
-# #     if @payment.update(payment_params)
-# #         redirect_to payment_path(@payment)
-# #     else
-# #         render('edit')
-# #     end
-# #   end
-
-## end
