@@ -14,10 +14,11 @@ Rails.application.routes.draw do
       get 'profile'
     end
   end
-  
-
 
   devise_for :users
+  resources :users do
+    resources :payments
+  end
 
   root to: "home#index"
 
