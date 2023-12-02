@@ -18,4 +18,7 @@ class HomeController < ApplicationController
   
     def explore
     end
+
+    def profile
+    end
 end

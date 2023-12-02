@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'explore'
       get 'map'
       get 'help'
+      get 'profile'
     end
   end
   

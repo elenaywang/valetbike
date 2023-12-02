@@ -21,11 +21,11 @@
     <nav>
       <ul>
           <li><%= link_to('Explore', explore_home_index_path) %>
-          <li><%= link_to('Map', map_home_index_path ) %></li>
+          <li><%= link_to('Rent Bike', map_home_index_path ) %></li>
           </li><li><%= link_to('Pricing', pricing_home_index_path) %></li>
           <li><%= link_to('Help', help_home_index_path) %></li>
           <% if user_signed_in? %>
-            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to "My Profile", profile_home_index_path %></li>
             <li> <%= button_to "Sign out ", destroy_user_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to("Register", new_user_registration_path) %></li>
