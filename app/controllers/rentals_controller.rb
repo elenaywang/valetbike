@@ -1,40 +1,32 @@
 class RentalsController < ApplicationController
   # before_action :require_login
-  before_action :set_station, only: [:create]
+  before_action :set_station, only: [:new, :create]
+  before_action :current_time, only: [:create, :update]
 
   def index
-    # users_rentals = Rental.where(borrower_id: current_user.id)
-    # @rentals = users_rentals.order(:checkout)
     @rentals = current_user.rentals
   end
   
   def new
-    @rental = Rental.new(checkout: DateTime.now) 
+    @rental = Rental.new(station_id: @station.id)
+    @station
   end
  
   def create
-    @rental = Rental.new(rental_params)
-    @random_number = "%07d" % rand(10000000)
-    @rental.number = @random_number
+    # @rental = Rental.new(rental_params)
+    @rental = Rental.new()
+    @rental.number = "%07d" % rand(10000000)
     @rental.borrower_id = current_user.id
     @rental.station_id = @station.id
-
     bikes_at_station = Bike.where(current_station_id: @station.id)
     @rental.bike_id = bikes_at_station.first.id
+    @rental.checkout = @current_time
     
-   
-    #and then loop over the bikes_at_station {to find the first that isn't in use:
-    #   if bike belongs to a rental (bike.)}
-    #and then make that bike's station null.
-
-    #so we'd need a ruby loop that checks ea bike to see if there is a rental that owns it at that time? 
-    #maybe at first we can not worry about scheduling and just do current rentals at current time.
     if @rental.save
       redirect_to rental_path(@rental)
       @bike = @rental.bike
       @bike.update(current_station_id: nil)
     else 
-      #eventually need to tell you to fix error
       render('new')
     end
   end
@@ -54,7 +46,15 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
+      @rental.update(return: @current_time)
+      puts "**********************\n\n\n\n"
+      puts @current_time
+      puts "\n\n\n\n**********************"
+  
+  
       redirect_to rental_path(@rental)
+      @bike = @rental.bike
+      @bike.update(current_station_id: @rental.station_id)
     else
       render('edit')
     end
@@ -69,11 +69,8 @@ class RentalsController < ApplicationController
     @station = Station.find(params[:station_id])
   end
 
-  # def require_login
-  #   unless logged_in?
-  #     flash[:error] = "You must be logged in to access this section"
-  #     redirect_to new_login_url 
-  #   end
-  # end
+  def current_time
+    @current_time = DateTime.now.getlocal('-05:00')
+  end
 
 end

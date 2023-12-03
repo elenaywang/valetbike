@@ -3,13 +3,14 @@
             <div class="section-title flexbox horizontal center" style = "text-align: center">
     <div class="rental new">
   <h2>Create New Bike Rental</h2>
+  Station ID: <%=@rental.station_id%>
+  Station Name: <%=@station.name%>
+  Station Address: <%=@station.address%>
   </div> 
   </div>
   </div>
   </div>
   <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
-
-    <%= form.datetime_local_field :checkout %>
     
     <div class="form-buttons">
       <%= form.submit "Rent now!" %>

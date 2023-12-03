@@ -5,15 +5,14 @@
 
 
 <div class="rentals edit">
-  <h2>Return rental</h2>
+  <h2>Return bike to:</h2>
 
   <%= form_for @rental, method: :patch do |form| %>
 
-    <%= form.datetime_local_field :return %>
-    <%= form.select :station_id, Station.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+    <%= form.select :station_id, Station.all.collect {|p| [ p.name, p.id ]}, include_blank: true %>
     
     <div class="form-buttons">
-      <%= form.submit "return rental" %>
+      <%= form.submit "Return now" %>
     </div>
 
   <% end %>

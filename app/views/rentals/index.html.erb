@@ -21,9 +21,7 @@
       <td><%= rental.bike_id %></td>
       <td><%= rental.number %></td>
       <td class="actions">
-        <%= link_to("Edit", edit_rental_path(rental), class: 'action edit') %>
-        <%= link_to("Cancel", '#', class: 'action delete') %>
-        <%= link_to("Return Bike", '#') %>
+        <%= link_to("Return Bike", edit_rental_path(rental), class: 'action edit') %>
       </td>
     </tr>
     <% end %>
