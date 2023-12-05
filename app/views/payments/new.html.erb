@@ -2,7 +2,9 @@
   <h1 class="font-bold text-4xl">Payment Info</h1>
 </div>
 
-<%= form_for [@user, @payment] do |form| %>
-  <%= render(partial: 'form', locals: {form: form}) %>
-<% end %>
+<div class="payment create form">
+
+    <%= render 'form' %>
   
+
+</div>

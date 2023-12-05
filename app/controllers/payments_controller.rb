@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+    before_action :authenticate_user!
     #validators for form input here
 
     # def index
@@ -16,16 +17,23 @@ class PaymentsController < ApplicationController
     end
 
     def create
-       if current_user.payment_id.blank?
-        @payment = Payment.new(payment_params) 
-        @payment.user_id = params[:user_id]
-            if @payment.save
-                flash.notice = "Payment information saved"
-                current_user.update_column(:payment_id, @payment.id)
-                redirect_to user_payments_path
+        puts "WTFF"
+        if current_user.id == params[:user_id]
+            if current_user.payment_id.blank? 
+                @payment = Payment.new(payment_params) 
+                @payment.user_id = params[:user_id]
+                #@payment.user gets user
+                    if @payment.save
+                        flash.notice = "Payment information saved"
+                        current_user.update_column(:payment_id, @payment.id)
+                        #current user.payment = payment
+                        redirect_to user_payments_path
+                    else
+                        flash.alert = "Unable to save payment information"
+                        render('new')
+                    end
             else
-                flash.alert = "Unable to save payment information"
-                render('new')
+                redirect_to user_payments_path
             end
         else
             redirect_to user_payments_path

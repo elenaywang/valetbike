@@ -1,7 +1,24 @@
-    <%= form.text_field :first_name %>
-    <%= form.text_field :last_name %>
-    <%= form.text_field :card_number %>
-    <%= form.number_field :cvv %>
-    <%= form.number_field :exp_month %>
-    <%= form.number_field :exp_year %>
-    <%= form.submit %>
+<%= form_for [@user, @payment] do |form| %>
+    <div class = "fields">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name %>
+        
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name %>
+        
+        <%= form.label :card_number %>
+        <%= form.text_field :card_number %>
+        
+        <%= form.label :cvv %>
+        <%= form.number_field :cvv %>
+        
+        <%= form.label :exp_month%>
+        <%= form.number_field :exp_month %>
+        
+        <%= form.label :exp_year%>
+        <%= form.number_field :exp_year %>
+    </div>
+    <div class = "action">
+        <%= form.submit %>
+    </div>
+<% end %>
