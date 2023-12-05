@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   has_one :payment
 
+  has_many :posts, dependent: :destroy
+
 end

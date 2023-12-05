@@ -6,3 +6,14 @@
             </div>
         </div>
     </div>
+
+
+<%= form_for (@post), url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <div class="form-group">
+    <%= f.text_field :description %>
+  </div>
+  <br>
+  <div class="text-center">
+    <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+  </div>
+<% end %>
