@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   has_one :payment
 
+  # def has_payment_id?
+  #   !self.id.nil? || self.payment_id.nil?
+  # end
+
 end

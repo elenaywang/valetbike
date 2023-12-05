@@ -118,3 +118,32 @@ footer ul{
     float: right;
     color: white;
 }
+
+.gif-container {
+    /*position: fixed; */
+    top: 10;
+    /*left: 10;*/
+    width: 35%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* You can add additional styling if needed */
+}
+
+.gif-container-dos {
+    /*position: fixed; */
+    top: 10;
+    /*left: 10;*/
+    width: 35%;
+    height: 35%;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    /* You can add additional styling if needed */
+}
+
+.gif-container img {
+    max-width: 40%;
+    max-height: 40%;
+}

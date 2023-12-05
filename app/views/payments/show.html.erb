@@ -2,3 +2,10 @@
   <h1 class="font-bold text-4xl">Payment#show</h1>
   <p>Find me in app/views/payments/show.html.erb</p>
 </div>
+
+<%= form_for(resource, as: resource_name, url: payment_path(resource_name), html: { method: :put }) do |f| %>
+
+<div class="field">
+  <%= f.label :first_name %><br />
+  <%= f.first_name_field :first_name, autofocus: true, autocomplete: "name" %>
+</div>

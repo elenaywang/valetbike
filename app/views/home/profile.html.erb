@@ -6,8 +6,9 @@
     </div>
       <% if user_signed_in? %>
         <div class="flexbox vertical center" style="margin-top: 10px;">
-          <%= link_to "Edit My Info", edit_user_registration_path, class: 'button' %>
-          <%= link_to "My Rentals", rentals_path, class: 'button' %>
+          <%= link_to "Edit email and password", edit_user_registration_path, class: 'button' %>
+          <%= link_to "View my rentals", rentals_path, class: 'button' %>
+          
         </div>
       <% end %>
   </div>

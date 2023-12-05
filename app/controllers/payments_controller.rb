@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
 
     def show
         #@user = current_user
-        @payment = Payment.find_by(user_id: current_user.id)
+        @payment = Payment.find_by(user_id: current_user.user_id)
     end
 
     def new
@@ -33,14 +33,18 @@ class PaymentsController < ApplicationController
     end
 
     def edit
+        @user = current_user
         @payment = Payment.find_by(user_id: current_user.id)
     end
+
 
     def update
         @payment = Payment.find_by(user_id: current_user.id)
         if @payment.update(payment_params)
+            flash.notice = "Payment information updated"
             redirect_to user_payments_path
         else
+            flash.notice = "Unable to update payment information"
             render ('edit')
         end
     end
