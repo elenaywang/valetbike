@@ -2,12 +2,10 @@
   <h1 class="font-bold text-4xl">Payment Info</h1>
 </div>
 
+
 <div class="payment edit form">
-  <h2>Edit Payment</h2>
-
-
-  <%= render 'form' %>
-  
-
+  <%= form_for [@user, @payment] do |form| %>
+    <%= render 'form' %>
+  <% end %>
 </div>
   
