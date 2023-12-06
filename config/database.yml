@@ -16,6 +16,7 @@ default: &default
   username: <%= ENV['MYSQL_USERNAME'] || 'root' %>
   password: <%= ENV['MYSQL_PASSWORD'] || '' %>
   socket: <%= ENV['MYSQL_SOCKET'] || '/var/run/mysqld/mysqld.sock' %>
+  timezone: 'Eastern Time (US & Canada)'
 
 development:
   <<: *default

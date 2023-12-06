@@ -8,19 +8,18 @@ class RentalsController < ApplicationController
   end
   
   def new
-    @rental = Rental.new(station_id: @station.id)
+    @rental = Rental.new()
     @station
   end
  
   def create
     # @rental = Rental.new(rental_params)
-    @rental = Rental.new()
-    @rental.number = "%07d" % rand(10000000)
-    @rental.borrower_id = current_user.id
-    @rental.station_id = @station.id
-    bikes_at_station = Bike.where(current_station_id: @station.id)
-    @rental.bike_id = bikes_at_station.first.id
-    @rental.checkout = @current_time
+    @rental = Rental.new(
+      number: "%07d" % rand(10000000),
+      borrower: current_user,
+      station_id: @station.id,
+      bike: Bike.where(current_station_id: @station.id).first,
+      checkout: @current_time)
     
     if @rental.save
       redirect_to rental_path(@rental)
@@ -46,18 +45,25 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
-      @rental.update(return: @current_time)
-      puts "**********************\n\n\n\n"
-      puts @current_time
-      puts "\n\n\n\n**********************"
-  
-  
+    #rentalLength =  @current_time - @rental.checkout
+    puts "**********************\n\n\n\n"
+    puts @current_time - @rental.checkout 
+    puts @rental.checkout
+    puts @current_time
+    puts rentalLength
+    puts "\n\n\n\n**********************"
+      @rental.update(
+        return: @current_time,
+        rentalLength: rentalLength,
+        cost: rentalLength*0.05) #eventually need to make the 5 cents not hard coded! If Chris defines it somewhere
       redirect_to rental_path(@rental)
       @bike = @rental.bike
       @bike.update(current_station_id: @rental.station_id)
     else
       render('edit')
     end
+
+
   end
 
   private
@@ -70,7 +76,7 @@ class RentalsController < ApplicationController
   end
 
   def current_time
-    @current_time = DateTime.now.getlocal('-05:00')
+    @current_time = DateTime.now
   end
 
 end

@@ -20,9 +20,14 @@
       <td><%= rental.station_id %></td>
       <td><%= rental.bike_id %></td>
       <td><%= rental.number %></td>
+      
+      <% if rental.return == nil %>
       <td class="actions">
         <%= link_to("Return Bike", edit_rental_path(rental), class: 'action edit') %>
       </td>
+      <% end %>
+
+
     </tr>
     <% end %>
   </table>

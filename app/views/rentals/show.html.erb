@@ -1,23 +1,33 @@
 <div>
-  <h1 class="font-bold text-4xl">Here is your rental</h1>
+  <% if @rental.return == nil %>
+    <h1 class="font-bold text-4xl">Here is your rental</h1>
+  <% else %>
+    <h1 class="font-bold text-4xl">Thanks for riding with us!</h1>
+  <% end %>
 
 </div>
 
 <table class="listing" summary="Rental list" style="width: 100%;">
 <tr class="header">
-  <th>Checkout time</th>
-  <th>Return time</th>
   <th>Station</th>
   <th>Bike id</th>
   <th>Rental code</th>
+  <th>Checkout time</th>
+  <% if @rental.return != nil %>
+    <th>Return time</th>
+    <th>Rental length</th>
+    <th>Cost of rental</th>
+  <%end%>
 </tr>
 
 <tr>
-  <td><%= @rental.checkout%></td> 
-  <td><%= @rental.return%></td>
   <td><%= @rental.station_id %></td>
   <td><%= @rental.bike_id %></td>
-  <td><%= @rental.number %></td>
+  <td><%= @rental.checkout.strftime("%A %d/%m/%Y %I:%M %p")%></td> 
+  <%if @rental.return != nil %>
+    <td><%= @rental.return.strftime("%A %d/%m/%Y %I:%M %p")%></td>
+    <td><%= @rental.rentalLength %></td>
+  <%end%>
   <td class="actions">
     <%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %>
     <%= link_to("Cancel", '#', class: 'action delete') %>
