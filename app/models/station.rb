@@ -1,4 +1,6 @@
 class Station < ApplicationRecord
+  geocoded_by :address
+  
   validates_presence_of    :identifier,
                            :name,
                            :address

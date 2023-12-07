@@ -1,15 +1,18 @@
-<div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title flexbox horizontal center" style="text-align: center; background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
-        <% email_parts = current_user.email.split('@') %>
-        <h2 style="margin: 0;"><%= user_signed_in? ? email_parts.first : "Guest" %>'s profile!</h2>
-    </div>
-      <% if user_signed_in? %>
-        <div class="flexbox vertical center" style="margin-top: 10px;">
-          <%= link_to "Edit My Info", edit_user_registration_path, class: 'button' %>
-          <%= link_to "My Rentals", rentals_path, class: 'button' %>
+<div class= "gen-container">
+  <div id= "general">
+    <div class="page-section flexbox vertical stretch">
+      <div class="section-inner flexbox vertical stretch">
+        <div class="section-title flexbox horizontal center">
+          <% email_parts = current_user.email.split('@') %>
+          <h2"><%= user_signed_in? ? email_parts.first : "Guest" %>'s profile!</h2>
         </div>
-      <% end %>
+          <% if user_signed_in? %>
+            <div class="flexbox vertical center" style="margin: 3em;">
+              <%= link_to "Edit My Info", edit_user_registration_path, class: 'button' %>
+              <%= link_to "My Rentals", rentals_path, class: 'button' %>
+            </div>
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
