@@ -1,6 +1,7 @@
 class RentalsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!     # forces user to log in before renting a bike
   before_action :set_station, only: [:create]
+  before_action :check_active_rental, only: [:new, :create]     # prevents user from making multiple rentals at once
 
   def index
     # users_rentals = Rental.where(borrower_id: current_user.id)
@@ -9,7 +10,7 @@ class RentalsController < ApplicationController
   end
   
   def new
-    @rental = Rental.new(checkout: DateTime.now) 
+    @rental = Rental.new(checkout: DateTime.now)    # prepopulating form with current time for start of rental
   end
  
   def create
@@ -43,10 +44,6 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
   end
 
-  def return_bike
-    
-  end
-
   def edit
     @rental = Rental.find(params[:id])
   end
@@ -54,6 +51,7 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
+      @rental.update(return: DateTime.now)
       redirect_to rental_path(@rental)
     else
       render('edit')
@@ -61,6 +59,7 @@ class RentalsController < ApplicationController
   end
 
   private
+
   def rental_params
     params.require(:rental).permit(:checkout, :station_id, :return)
   end
@@ -69,11 +68,15 @@ class RentalsController < ApplicationController
     @station = Station.find(params[:station_id])
   end
 
-  # def require_login
-  #   unless logged_in?
-  #     flash[:error] = "You must be logged in to access this section"
-  #     redirect_to new_login_url 
-  #   end
-  # end
+  def check_active_rental
+    # checks if current user has no rentals that have not been returned yet
+    unless current_user.rentals.where(return: nil).empty?
+      flash[:notice] = 'Please return your current bike before renting another one.'
+      redirect_to rentals_path
+      # @active_rental = current_user.rentals.where(return: nil)    # trying to redirect to current active rental
+      # redirect_to rental_path(@active_rental)
+    end
+  end
+
 
 end
