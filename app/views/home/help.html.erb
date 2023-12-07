@@ -1,28 +1,178 @@
-<h2>Frequently Asked Questions</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<ul>
-    <li>
-        <strong>How do I rent a bike?</strong>
-        <p>To rent a bike, simply browse our selection, choose the station you want, and follow the easy steps to complete the rental process.</p>
-    </li>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-    <li>
-        <strong>What are the rental rates?</strong>
-        <p>Our rental rates vary based on the duration of your rental. Check our pricing page for detailed information on hourly and daily rates.</p>
-    </li>
+<style>
+  body {
+    background-color: #fffff;
+  }
 
-    <li>
-        <strong>Is there a minimum age requirement for renting a bike?</strong>
-        <p>Yes, there is a minimum age requirement for renting a bike is 16 years old.</p>
-    </li>
+  .split {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    padding-top: 20px;
+  }
 
-    <li>
-        <strong>What happens if the bike is damaged during my rental?</strong>
-        <p>If the bike is damaged during your rental, please report it immediately. Charges may apply based on the extent of the damage.</p>
-    </li>
+  .left {
+    left: 0;
+    background-color: #fffff;
+  }
 
-    <li>
-        <strong>What forms of payment do you accept?</strong>
-        <p>We accept major credit cards and debit cards as forms of payment.</p>
-    </li>
-</ul>
+  .right {
+    right: 0;
+    background-color: #f67f25;
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .centered img {
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .faq-content {
+    display: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: block;
+    margin-top: 300px; 
+    margin-left: 0px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #d3f7d1; 
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; 
+    transition: background-color 0.3s; /* Smooth transition on hover */
+  }
+
+  .dropdown-content a:hover {
+    background-color: #a2e1a1; 
+  }
+
+  .green-button {
+    background-color: #4CAF50; 
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    font-size: 16px; /* Font size */
+  }
+
+
+  .green-button:hover {
+    background-color: #45a049; 
+  }
+
+</style>
+
+</head>
+<body>
+
+  <div class="split left">
+    <div class="page-section flexbox vertical stretch">
+      <div class="section-inner flexbox vertical stretch" style="margin-right: 5em; margin-left: 5em;">
+        <div class="section-title flexbox horizontal center">
+          <h1>We are the Clemen Team</h1>
+        </div>
+        <p>We are a team of five dedicated computer science students, class of 2025, passionate about contributing to the progress and well-being of our city's population. Through hard work and innovation, we have created a bike renting website that provides an affordable and convenient solution for people in the valley to get around. Our commitment to sustainable transportation aims to make a positive impact on both the community and the environment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="split right">
+    <div class="centered">
+      <%= image_tag('clementeam.png') %>
+    </div>
+
+    <div class="dropdown" data-turbolinks="false">
+      <button class="green-button">FAQ</button>
+      <div class="dropdown-content">
+        <a href="#" class="faq-question">How do I rent a bike?</a>
+            <div class="faq-content">
+                To rent a bike, simply click on Rent bike, choose the station you want, and follow the easy steps to complete the rental process.
+            </div>
+        <a href="#" class="faq-question" >What are the rental rates?</a>
+            <div class="faq-content">
+                 Our rental rates vary based on the duration of your rental. Check our pricing page for detailed information.
+            </div>
+        <a href="#" class="faq-question" >Is there a minimum age requirement for renting a bike?</a>
+            <div class="faq-content">
+                 Yes, there is a minimum age requirement for renting a bike is 16 years old.
+            </div>
+        <a href="#" class="faq-question" >What happens if the bike is damaged during my rental?</a>
+            <div class="faq-content">
+                 If the bike is damaged during your rental, please report it immediately. Charges may apply based on the extent of the damage
+            </div>
+        <a href="#" class="faq-question" >What forms of payment do you accept?</a>
+            <div class="faq-content">
+                We accept major credit cards and debit cards as forms of payment.
+            </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const dropdownButton = document.querySelector('.green-button');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqContents = document.querySelectorAll('.faq-content');
+
+    function toggleFaqContent(event) {
+      event.preventDefault();
+
+      const clickedQuestion = this;
+      const clickedContent = clickedQuestion.nextElementSibling;
+
+      faqContents.forEach(function(content) {
+        if (content !== clickedContent) {
+          content.style.display = 'none';
+        }
+      });
+
+      clickedContent.style.display = (clickedContent.style.display === 'block') ? 'none' : 'block';
+    }
+
+    dropdownButton.addEventListener('click', toggleFaqContent);
+
+    faqQuestions.forEach(function(question) {
+      question.addEventListener('click', toggleFaqContent);
+    });
+  });
+</script>
+
+</body>
+</html>
