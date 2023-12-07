@@ -1,0 +1,22 @@
+
+  #mapdesc{
+    background-color: #ffffff;
+    color: #2a5c25;
+    grid-area: mapdesc;
+  }
+  
+  #map{
+    background-color: #ffffff;
+    grid-area: map;
+  }
+  
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+
+  .mapboxgl-popup-content {
+    text-align: center; 
+    font-family: 'Open Sans', 
+    sans-serif;
+  }
+  

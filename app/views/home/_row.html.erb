@@ -1,8 +1,6 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
   <%= station.name %> (<%= station.address %>) 
   <ul style= "background-color: #78a350;">
-   <li><%= link_to("Rent a bike at this station", new_station_rental_path(station)) %>
-   <%= station.docked_bikes.count %> bikes</li>
-   
+   <li><%= link_to("Rent a bike at this station", new_station_rental_path(station)) %></li>
   </ul>
 </div>
