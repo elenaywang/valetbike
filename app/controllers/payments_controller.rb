@@ -8,13 +8,14 @@ class PaymentsController < ApplicationController
     #     @payment = Payment.order(:first_name)
     # end
 
-    def show
-        #@user = current_user
-        @payment = Payment.find_by(user_id: current_user.id)
-    end
+    # def show
+    #     #@user = current_user
+    #     @payment = Payment.find_by(user_id: current_user.id)
+    # end
 
     def new
-        if current_user.payment_id.blank?
+        @user = current_user
+        if @user.payment_id.blank?
             @user = current_user
             @payment = Payment.new
         else
@@ -24,24 +25,21 @@ class PaymentsController < ApplicationController
     end
 
     def create
-        if current_user.payment_id.blank? 
+        @user = current_user
+        if @user.payment_id.blank? 
             @payment = Payment.new(payment_params) 
-            @payment.user_id = params[:user_id]
-            #@payment.user gets user
-                if @payment.save                        flash.notice = "Payment information saved"
-                    current_user.update_column(:payment_id, @payment.id)
-                    #current user.payment = payment
+            @payment.user = @user
+                if @payment.save                        
+                    flash.notice = "Payment information saved"
+                    @user.payment = @payment
                     redirect_to user_payments_path
                 else
-                    flash.alert = "Unable to save payment information"
-                    render('new')
+                    flash.alert = "Unable to save payment information. Please ensure all information is valid."
+                    redirect_to new_user_payment_path
                 end
         else
             redirect_to user_payment_path
         end
-        # else
-        #     redirect_to user_payments_path(current_user)
-        # end
     end
 
     def edit
@@ -56,17 +54,15 @@ class PaymentsController < ApplicationController
             flash.notice = "Payment information updated"
             redirect_to user_payments_path
         else
-            flash.alert = "Unable to update payment information"
-            render ('edit')
+            flash.alert = "Unable to update payment information. Please ensure all information is valid."
+            redirect_to edit_user_payment_path
         end
     end
 
     def check_user
-        # Rails.logger.debug "current_user.id: #{current_user.id}"
-        # Rails.logger.debug "params[:user_id]: #{params[:user_id]}"
         if current_user.id != params[:user_id].to_i
-            #flash.alert = "Access prohibited"
             redirect_to user_payments_path(current_user)
+            #redirect_to profile_home_index_path
             #change this redirect to take you back to profile editing page
         end
     end
@@ -74,6 +70,7 @@ class PaymentsController < ApplicationController
     def check_payment
         if current_user.payment_id != params[:id].to_i
             redirect_to user_payments_path(current_user)
+            #redirect_to profile_home_index_path
             #change redirect to take you back to profile
         end
     end

@@ -18,7 +18,16 @@
         <%= form.label :exp_year%>
         <%= form.number_field :exp_year %>
     </div>
+    <div id="errors">
+    <% if @payment.errors.any? %>
+        <ul>
+        <% @payment.errors.full_messages.each do |msg| %>
+            <li><%= msg%></li>
+        <% end %>
+        </ul>
+    <% end %>
+    </div>
     <div class = "action">
         <%= form.submit %>
     </div>
-<% end %>
+    <% end %>
