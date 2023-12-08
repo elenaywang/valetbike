@@ -7,34 +7,8 @@
 
 </div>
 
-<table class="listing" summary="Rental list" style="width: 100%;">
-<tr class="header">
-  <th>Station</th>
-  <th>Bike id</th>
-  <th>Rental code</th>
-  <th>Checkout time</th>
-  <% if @rental.return != nil %>
-    <th>Return time</th>
-    <th>Rental length</th>
-    <th>Cost of rental</th>
-  <%end%>
-</tr>
-
-<tr>
-  <td><%= @rental.station_id %></td>
-  <td><%= @rental.bike_id %></td>
-  <td><%= @rental.checkout.strftime("%A %d/%m/%Y %I:%M %p")%></td> 
-  <%if @rental.return != nil %>
-    <td><%= @rental.return.strftime("%A %d/%m/%Y %I:%M %p")%></td>
-    <td><%= @rental.rentalLength %></td>
-  <%end%>
-  <td class="actions">
-    <%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %>
-    <%= link_to("Cancel", '#', class: 'action delete') %>
-  </td>
-</tr>
-
-</table>
+<%= render(partial: "rentals/table_header") %>
+<%= render(partial: "rentals/row", object: @rental) %>
 
 <div>
   <h2 class="font-bold text-4xl">

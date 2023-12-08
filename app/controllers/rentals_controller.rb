@@ -34,10 +34,6 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
   end
 
-  def return_bike
-    
-  end
-
   def edit
     @rental = Rental.find(params[:id])
   end
@@ -45,20 +41,10 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
-    #rentalLength =  @current_time - @rental.checkout
-    puts "**********************\n\n\n\n"
-    puts @current_time - @rental.checkout 
-    puts @rental.checkout
-    puts @current_time
-    puts rentalLength
-    puts "\n\n\n\n**********************"
-      @rental.update(
-        return: @current_time,
-        rentalLength: rentalLength,
-        cost: rentalLength*0.05) #eventually need to make the 5 cents not hard coded! If Chris defines it somewhere
+      @rental.update(return: @current_time)
+      bike = @rental.bike
+      bike.update(current_station_id: @rental.station_id)
       redirect_to rental_path(@rental)
-      @bike = @rental.bike
-      @bike.update(current_station_id: @rental.station_id)
     else
       render('edit')
     end
@@ -76,7 +62,7 @@ class RentalsController < ApplicationController
   end
 
   def current_time
-    @current_time = DateTime.now
+    @current_time = Time.now
   end
 
 end
