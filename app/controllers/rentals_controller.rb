@@ -1,8 +1,7 @@
 class RentalsController < ApplicationController
   before_action :authenticate_user!     # forces user to log in before renting a bike
-  before_action :set_station, only: [:create]
-  before_action :check_user_has_active_rental, only: [:new, :create]     # prevents user from making multiple rentals at once
-  before_action :check_already_returned, only: [:edit, :update]          # prevent user from returning a rental that was already returned
+  before_action :set_station, :prevent_mult_rentals, :station_has_bikes, only: [:new, :create]
+  before_action :prevent_return_old_rental, only: [:edit, :update]   # prevent user from returning a rental that was already returned
 
   def index
     # users_rentals = Rental.where(borrower_id: current_user.id)
@@ -11,7 +10,7 @@ class RentalsController < ApplicationController
   end
   
   def new
-    @rental = Rental.new(checkout: DateTime.now)    # prepopulating form with current time for start of rental
+    @rental = Rental.new(checkout: DateTime.now)      # prepopulating form with current time for start of rental
   end
  
   def create
@@ -69,22 +68,33 @@ class RentalsController < ApplicationController
     @station = Station.find(params[:station_id])
   end
 
-  def check_user_has_active_rental
+  def prevent_mult_rentals
     # checks if current user has no rentals that have not been returned yet
     unless current_user.rentals.where(return: nil).empty?
+      # redirects if user has an active rental that has not been returned yet
       flash[:notice] = 'Please return your current bike before renting another one.'
       redirect_to rentals_path
-      # @active_rental = current_user.rentals.where(return: nil)    # trying to redirect to current active rental
+      # @active_rental = current_user.rentals.where(return: nil)    # TODO: trying to redirect to current active rental
       # redirect_to rental_path(@active_rental)
     end
   end
 
-  def check_already_returned
+  def prevent_return_old_rental
     # checks if the rental has already been returned
     @rental = Rental.find(params[:id])
     unless @rental.return.nil?
+      # redirects if the rental has already been returned
       flash[:notice] = 'You have already returned this bike.'
       redirect_to rentals_path
+    end
+  end
+
+  def station_has_bikes
+    # checks if the station has bikes
+    unless @station.docked_bikes.count > 0
+      # redirects if the station has no bikes
+      flash[:notice] = 'This station has no bikes. Please choose another station.'
+      redirect_to map_home_index_path    # flash message is hard to read bc map loads on top of it; TODO: may need to change this
     end
   end
 
