@@ -42,15 +42,12 @@ class RentalsController < ApplicationController
   end
 
   def show
-    # @rental = Rental.find(params[:id])
   end
 
   def edit
-    # @rental = Rental.find(params[:id])
   end
 
   def update
-    # @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
       @rental.update(return: DateTime.now)
       redirect_to rental_path(@rental)
@@ -73,20 +70,18 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
   end
 
+  # checks if current user has no rentals that have not been returned yet
   def prevent_multi_rentals
-    # checks if current user has no rentals that have not been returned yet
     unless current_user.rentals.where(return: nil).empty?
       # redirects if user has an active rental that has not been returned yet
       flash[:notice] = 'Please return your current bike before renting another one.'
-      redirect_to rentals_path
-      # @active_rental = current_user.rentals.where(return: nil)    # TODO: trying to redirect to current active rental
-      # redirect_to rental_path(@active_rental)
+      @active_rental = current_user.rentals.where(return: nil).first
+      redirect_to rental_path(@active_rental.id)      # redirects to currently active rental
     end
   end
 
+  # checks if the rental has already been returned
   def prevent_return_old_rental
-    # checks if the rental has already been returned
-    # @rental = Rental.find(params[:id])
     unless @rental.return.nil?
       # redirects if the rental has already been returned
       flash[:notice] = 'You have already returned this bike.'
@@ -94,8 +89,8 @@ class RentalsController < ApplicationController
     end
   end
 
+  # checks if the station has bikes
   def station_has_bikes
-    # checks if the station has bikes
     unless @station.docked_bikes.count > 0
       # redirects if the station has no bikes
       flash[:notice] = 'This station has no bikes. Please choose another station.'
@@ -103,8 +98,8 @@ class RentalsController < ApplicationController
     end
   end
 
+  # checks if the user has provided their payment info
   def ask_for_payment
-    # checks if the user has provided their payment info
     if current_user.payment_id.nil?
       # redirects if current user has no payment info
       flash[:notice] = 'Please input your payment information.'
