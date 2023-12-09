@@ -11,12 +11,15 @@ Rails.application.routes.draw do
       get 'explore'
       get 'map'
       get 'help'
+      get 'profile'
     end
   end
-  
-
 
   devise_for :users
+  
+  resources :users do
+    resources :payments
+  end
 
   root to: "home#index"
 

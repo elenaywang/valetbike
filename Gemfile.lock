@@ -99,6 +99,7 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.11.0)
+    geocoder (1.8.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -242,6 +243,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -250,6 +252,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  geocoder (~> 1.8)
   importmap-rails
   jbuilder
   mapbox-gl-rails

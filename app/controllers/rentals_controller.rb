@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  # before_action :require_login
+  before_action :authenticate_user!
   before_action :set_station, only: [:new, :create]
   before_action :current_time, only: [:create, :update]
 

@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
     def index
+      if params[:station].present?
+        @stations = Station.near(params[:station])
+      else
+        @stations = Station.all.order(identifier: :asc)
+      end
     end
   
     def map
@@ -17,5 +22,8 @@ class HomeController < ApplicationController
     end
   
     def explore
+    end
+
+    def profile
     end
 end
