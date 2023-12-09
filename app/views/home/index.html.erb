@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div id= "bikeimg" style= "max-width: 750px; position: static; margin: auto;">
+  <div id= "bikeimg" style= "max-width: 800px; position: static; margin: auto;">
       <%= image_tag('Clemenbykes stock photo.png') %>
   </div>
 
@@ -21,27 +21,35 @@
     <div class="page-section flexbox vertical stretch" style= "margin-top: 5em; margin-bottom:3em" >
       <div class="section-inner flexbox vertical stretch">
         <div class="section-title flexbox horizontal center">
-            <h1>How It Works</h1>
+            <h1><b>How It Works</b></h1>
         </div>
         <div class="container" style= "text-align: center;">
               <div class="row">
                 <div class="column">
-                      <h1>Step 1 </h1>
-                      <h2>Get Code </h2>
+                      <h1>Step 1</h1>
+                      <%= image_tag('get code.png')%>
+                      <h2> <b>Get Code </b> </h2>
+                      <p> After choosing a station and time, simply click "Rent Now" and a unique code will be generated for you!</p>
                 </div>
                 
                 <div class="column">
                     <h1>Step 2</h1>
-                    <h2>Unlock</h2>
+                    <%= image_tag('kiosk unlock.png')%>
+                    <h2><b>Unlock</b></h2>
+                    <p> Enter your code at our kiosks located at each station and a bike will unlock!</p>
                 </div>
                 
                 <div class="column">
                     <h1>Step 3</h1>
-                    <h2>Ride</h2>
+                    <%= image_tag('ride bike.png')%>
+                    <h2><b>Ride</b></h2>
+                    <p> Have a sweet time riding!</p>
                 </div> 
                 <div class="column">
                     <h1>Step 4</h1>
-                    <h2>Return</h2>
+                    <%= image_tag('return bike.png')%>
+                    <h2><b>Return</b></h2>
+                    <p>At the closest station near you, return the bike and you are all set!</p>
                 </div> 
               </div>
             </div>    
@@ -65,27 +73,9 @@
 
 
 <div id="map"></div>
-  
-<script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
-    const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    center: [-72.64, 42.325], // starting position [lng, lat]
-    zoom: 11.5 // starting zoom
-  });
-  
-  //iterates all stations, creating new location marker for each using longitude and latitude attributes 
-  <% @stations.each do |station| %>
-    new mapboxgl.Marker({color: 'orange'})
-      .setLngLat([<%= station.longitude %>, <%= station.latitude %>])
-      .setPopup(
-      new mapboxgl.Popup({ offset: 25 }) 
-      .setHTML("<h3><%=station.name%></h3><p>Docked Bike Count: <%=station.docked_bikes.count%></p>")
-    )   
-  .addTo(map); 
-<%end%> 
-</script> 
+
+
+<%=javascript_include_tag 'map' %>
 
 
 </div>
