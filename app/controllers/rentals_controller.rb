@@ -3,6 +3,7 @@ class RentalsController < ApplicationController
   before_action :set_station, only: [:new, :create]
   before_action :current_time, only: [:create, :update]
 
+
   def index
     @rentals = current_user.rentals
   end
@@ -13,7 +14,6 @@ class RentalsController < ApplicationController
   end
  
   def create
-    # @rental = Rental.new(rental_params)
     @rental = Rental.new(
       number: "%07d" % rand(10000000),
       borrower: current_user,

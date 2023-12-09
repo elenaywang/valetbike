@@ -1,4 +1,4 @@
-<table class="listing" summary="Rental list" style="width: 70%;">
+<table class="listing" summary="Rental list" style="width: 90%;">
 
 <tr>
   <td><%= @rental.station_id %></td>
@@ -7,6 +7,7 @@
   <%if @rental.return != nil %>
     <td><%= (@rental.return).strftime("%A %d/%m/%Y %I:%M %p")%></td>
     <td><%= @rental.duration %></td>
+    <td><%= @rental.cost %></td>
   <% else %>
     <td class="actions">
         <td><%= @rental.number %></td>
