@@ -17,7 +17,7 @@ header::after {
   display: grid;
   min-height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: .8fr .5fr .2fr 1.5fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
   grid-template-areas:
   "welcome welcome bikeimg bikeimg" 
   "howto howto howto howto"
@@ -32,8 +32,8 @@ header::after {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: .5fr .5fr;
   grid-template-areas:
-  "mapdesc mapdesc mapdesc mapdesc" 
-  "map map map map"
+  "mapSidebar mapdesc mapdesc mapdesc" 
+  "mapSidebar map map map"
 
 }
 
@@ -83,7 +83,7 @@ footer ul{
 
 .row {
   display: flex;
-  gap: 1em; 
+  gap: 4em; 
   margin-bottom: 70px;
 }
 
@@ -91,8 +91,7 @@ footer ul{
   border-radius: 25px;
   background-color: #ffffff;
   color: #2a5c25;
-  padding: 1em;
-  
+  padding: 3em 1em 3em 1em;
   flex: 1;
 }
 
