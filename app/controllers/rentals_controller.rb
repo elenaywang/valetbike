@@ -1,6 +1,7 @@
 class RentalsController < ApplicationController
   before_action :authenticate_user!     # forces user to log in before renting a bike
-  before_action :set_station, :prevent_mult_rentals, :station_has_bikes, only: [:new, :create]
+  before_action :set_rental, only: [:show, :edit, :update]
+  before_action :set_station, :ask_for_payment, :prevent_multi_rentals, :station_has_bikes, only: [:new, :create]
   before_action :prevent_return_old_rental, only: [:edit, :update]   # prevent user from returning a rental that was already returned
 
   def index
@@ -41,15 +42,15 @@ class RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.find(params[:id])
+    # @rental = Rental.find(params[:id])
   end
 
   def edit
-    @rental = Rental.find(params[:id])
+    # @rental = Rental.find(params[:id])
   end
 
   def update
-    @rental = Rental.find(params[:id])
+    # @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
       @rental.update(return: DateTime.now)
       redirect_to rental_path(@rental)
@@ -68,7 +69,11 @@ class RentalsController < ApplicationController
     @station = Station.find(params[:station_id])
   end
 
-  def prevent_mult_rentals
+  def set_rental
+    @rental = Rental.find(params[:id])
+  end
+
+  def prevent_multi_rentals
     # checks if current user has no rentals that have not been returned yet
     unless current_user.rentals.where(return: nil).empty?
       # redirects if user has an active rental that has not been returned yet
@@ -81,7 +86,7 @@ class RentalsController < ApplicationController
 
   def prevent_return_old_rental
     # checks if the rental has already been returned
-    @rental = Rental.find(params[:id])
+    # @rental = Rental.find(params[:id])
     unless @rental.return.nil?
       # redirects if the rental has already been returned
       flash[:notice] = 'You have already returned this bike.'
@@ -95,6 +100,15 @@ class RentalsController < ApplicationController
       # redirects if the station has no bikes
       flash[:notice] = 'This station has no bikes. Please choose another station.'
       redirect_to map_home_index_path    # flash message is hard to read bc map loads on top of it; TODO: may need to change this
+    end
+  end
+
+  def ask_for_payment
+    # checks if the user has provided their payment info
+    if current_user.payment_id.nil?
+      # redirects if current user has no payment info
+      flash[:notice] = 'Please input your payment information.'
+      redirect_to new_user_payment_path(current_user.id)
     end
   end
 
