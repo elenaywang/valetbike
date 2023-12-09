@@ -26,7 +26,6 @@
 
   .right {
     right: 0;
-    background-color: #f67f25;
   }
 
   .centered {
@@ -59,7 +58,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #d3f7d1; 
+    background-color: #e3fad7; 
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 12px;
@@ -67,11 +66,13 @@
   }
 
   .dropdown:hover .dropdown-content {
+    border-radius: 20px;
     display: block;
   }
 
   .dropdown-content a {
     display: block;
+    border-radius: 20px;
     padding: 10px;
     text-decoration: none;
     color: #333; 
@@ -79,6 +80,7 @@
   }
 
   .dropdown-content a:hover {
+    border-radius: 20px;
     background-color: #a2e1a1; 
   }
 
@@ -92,6 +94,9 @@
     font-size: 16px; /* Font size */
   }
 
+  .faq-question{
+    font-weight: bold;
+  }
 
   .green-button:hover {
     background-color: #45a049; 
@@ -102,7 +107,7 @@
 </head>
 <body>
 
-  <div class="split left">
+  <article class="split left" >
     <div class="page-section flexbox vertical stretch">
       <div class="section-inner flexbox vertical stretch" style="margin-right: 5em; margin-left: 5em;">
         <div class="section-title flexbox horizontal center">
@@ -111,14 +116,15 @@
         <p>We are a team of five dedicated computer science students, class of 2025, passionate about contributing to the progress and well-being of our city's population. Through hard work and innovation, we have created a bike renting website that provides an affordable and convenient solution for people in the valley to get around. Our commitment to sustainable transportation aims to make a positive impact on both the community and the environment.</p>
       </div>
     </div>
-  </div>
+  </article>
+  
 
-  <div class="split right">
+  <section class="split right">
     <div class="centered">
       <%= image_tag('clementeam.png') %>
     </div>
 
-    <div class="dropdown" data-turbolinks="false">
+    <section class="dropdown" data-turbolinks="false">
       <button class="green-button">FAQ</button>
       <div class="dropdown-content">
         <a href="#" class="faq-question">How do I rent a bike?</a>
@@ -142,11 +148,14 @@
                 We accept major credit cards and debit cards as forms of payment.
             </div>
       </div>
-    </div>
+    </section>
+
   </div>
 
+
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('turbo:load', function() {
     const dropdownButton = document.querySelector('.green-button');
     const faqQuestions = document.querySelectorAll('.faq-question');
     const faqContents = document.querySelectorAll('.faq-content');
@@ -159,7 +168,7 @@
 
       faqContents.forEach(function(content) {
         if (content !== clickedContent) {
-          content.style.display = 'none';
+          content.style.display = 'none'; 
         }
       });
 
@@ -172,6 +181,12 @@
       question.addEventListener('click', toggleFaqContent);
     });
   });
+
+  
+    $(document).on('turbo:load', function() {
+        toggleFaqContent(event);
+    }); 
+    
 </script>
 
 </body>

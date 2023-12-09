@@ -106,6 +106,7 @@ nav ul li a:hover {
     background-color: #f67f25;
 }
  
+body { min-height: 100vh; }
 
 footer {
     height: 3em;

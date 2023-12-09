@@ -1,16 +1,17 @@
 .sidebar{
-    height: 100%;
+    position: absolute;
+    height: 70%;
     width: 0;
-    position: fixed;
     z-index: 1;
-    top: 0;
+    top: 50;
     left: 0;
-    background-color: #78a350;
+    background-color: #60843f;
     overflow-x: hidden;
     padding-top: 60px;
 }
 
 .sidebar a {
+    border-radius: 120px;
     text-decoration: none;
     font-size: 1em;
     color:  #ffffff;
@@ -19,7 +20,11 @@
   }
 
 .sidebar a:hover{
-    background-color:  #59882d;
+    border-radius: 120px;
+    border-style: solid;
+    border-width: thin medium thin;
+    border-color: white;
+    background-color:  #e09213;
 }
 
 .sidebar .closebtn {
@@ -31,12 +36,15 @@
   }
   
   .openbtn {
+    position: absolute;
+    border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
-    background-color: #78a350;
+    background-color: #60843f;
     padding: 10px 15px;
     color: white;
     border: none;
+    margin-left: -640px;
   }
   
   .openbtn:hover {

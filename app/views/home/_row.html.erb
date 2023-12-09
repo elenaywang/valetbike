@@ -1,8 +1,16 @@
-<div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
-  <%= station.name %> (<%= station.address %>) 
-  <ul style= "background-color: #78a350;">
-   <li><%= link_to("Rent a bike at this station", new_station_rental_path(station)) %>
-   <%= station.docked_bikes.count %> bikes</li>
-   
+<div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch"> 
+  <ul style= "background-color: #b0d47b; border-radius: 8px;">
+   <div style = "left: 20;">
+      <%= station.name %> (<%= station.address %>)
+   </div>
+
+   <li> 
+    <div style = "border-radius: 8px; font-weight: bold;">
+        <%= link_to("Rent a bike", new_station_rental_path(station)) %>
+      </div>
+      <div style = "font-style: italic; color: #58783a">
+          <%= station.docked_bikes.count %> bike(s) available
+      </div>
+   </li>
   </ul>
 </div>
