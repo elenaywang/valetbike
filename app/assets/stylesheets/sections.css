@@ -1,0 +1,56 @@
+#welcome {
+    background-color: #ffffff;
+    color: #2a5c25;
+    left: 0;
+    grid-area: welcome;
+  }
+  
+#bikeimg {
+    right: 0;
+    background-color: #ffffff;
+    grid-area: bikeimg;
+}
+
+#howto {
+  background-color: #ffcd91;
+  color: #2a5c25;
+  grid-area: howto;
+}
+
+  
+#stationview{
+  grid-area: stationview;
+}
+
+#newrental{
+  color: #2a5c25;
+}
+
+#reglog{
+  background-color: #b1e695;
+  color: #2a5c25;
+  grid-area: reglog;
+}
+
+#general{
+  color: #2a5c25;
+  grid-area: gen;
+}
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.centered img{
+  max-width: 750px;
+  max-height: 500px;
+  position: static;
+  margin: auto;
+
+}

@@ -1,13 +1,13 @@
 .sidebar{
     height: 100%;
-    width: 0;
-    position: fixed;
+    width: 300px;
+    position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #78a350;
     overflow-x: hidden;
-    padding-top: 60px;
+    padding-top: 20px;
 }
 
 .sidebar a {
@@ -44,7 +44,7 @@
   }
   
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  #main {
+  #stationview {
     transition: margin-left .5s; /* If you want a transition effect */
     padding: 20px;
   }

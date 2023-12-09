@@ -2,10 +2,103 @@
 /*       Universal Page Style       */
 /************************************/
 
-.page-section {
-  max-width: 80em;
+header {
+  background: #ff873c;
+  grid-row: 1;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.home-container{
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "welcome welcome bikeimg bikeimg" 
+  "howto howto howto howto"
+  "mapdesc mapdesc mapdesc mapdesc"
+  "map map map map"
+ 
+}
+
+.map-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .5fr .5fr;
+  grid-template-areas:
+  "mapSidebar mapdesc mapdesc mapdesc" 
+  "mapSidebar map map map"
+
+}
+
+.reglog-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "reglog reglog reglog reglog" 
+}
+
+.gen-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "gen gen gen gen" 
+}
+
+
+footer {
+  grid-row: 3;
+  bottom: 0;
   width: 100%;
-  margin-top: 4em;
+  padding: 3em;
+  background: #ff873c;
+}
+
+footer ul{
+  float: right;
+  color: white;
+}
+
+.container{
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  gap: 4em; 
+  margin-bottom: 70px;
+}
+
+.column{
+  border-radius: 25px;
+  background-color: #ffffff;
+  color: #2a5c25;
+  padding: 3em 1em 3em 1em;
+  flex: 1;
+}
+
+.column h1{
+  text-align: center;
+  font-size: 2em;
+}
+
+.logo{
+  float: left;
+  padding: 1em;
+}
+
+.page-section {
+  max-width: 100em;
+  width: 100%;
 }
 
 .page-section .section-inner {
@@ -34,6 +127,7 @@
 .record-row.odd {
   background: var(--dark-white-color);
 }
+
 
 
 /***********************************/

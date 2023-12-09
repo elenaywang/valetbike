@@ -1,10 +1,15 @@
+<div class= "gen-container">
+<div id= "general">
 <div class="page-section flexbox vertical stretch">
         <div class="section-inner flexbox vertical stretch">
             <div class="section-title flexbox horizontal center" style = "text-align: center">
     <div class="rental new">
-  <h2>Create New Bike Rental</h2>
+      <h2>Create New Bike Rental</h2>
+       Station ID: <%=@rental.station_id%>
+  Station Name: <%=@station.name%>
+  Station Address: <%=@station.address%>
   </div> 
-  </div>
+    </div>
   </div>
   </div>
   <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
@@ -17,6 +22,7 @@
 
   <% end %>
 </div>
-
+</div>
+</div>
     
 
