@@ -1,30 +1,14 @@
 <div>
-  <h1 class="font-bold text-4xl">Here is your rental</h1>
+  <% if @rental.return == nil %>
+    <h1 class="font-bold text-4xl">Here is your rental</h1>
+  <% else %>
+    <h1 class="font-bold text-4xl">Thanks for riding with us!</h1>
+  <% end %>
 
 </div>
 
-<table class="listing" summary="Rental list" style="width: 100%;">
-<tr class="header">
-  <th>Checkout time</th>
-  <th>Return time</th>
-  <th>Station</th>
-  <th>Bike id</th>
-  <th>Rental code</th>
-</tr>
-
-<tr>
-  <td><%= @rental.checkout.to_fs(:long_ordinal)%></td> 
-  <td><%= @rental.return %></td>
-  <td><%= @rental.station_id %></td>
-  <td><%= @rental.bike_id %></td>
-  <td><%= @rental.number %></td>
-  <td class="actions">
-    <%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %>
-    <%= link_to("Cancel", '#', class: 'action delete') %>
-  </td>
-</tr>
-
-</table>
+<%= render(partial: "rentals/table_header") %>
+<%= render(partial: "rentals/row", object: @rental) %>
 
 <div>
   <h2 class="font-bold text-4xl">
