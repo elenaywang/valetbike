@@ -40,7 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_212148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "number"
-    t.integer "station_id"
   end
 
   create_table "stations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -62,6 +61,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_212148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "payment_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birthday"
+    t.integer "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["payment_id"], name: "index_users_on_payment_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

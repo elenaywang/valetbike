@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
     def index
       @stations = Station.all.order(identifier: :asc)
 
@@ -27,5 +28,11 @@ class HomeController < ApplicationController
     end
 
     def profile
+      # defines a user's currently active rental if they have one
+      unless current_user.rentals.where(return: nil).empty?
+        @active_rental = current_user.rentals.where(return: nil).first
+      end
     end
+
+
 end
