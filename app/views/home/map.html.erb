@@ -7,7 +7,11 @@
       <div class="section-title flexbox horizontal center">
         <h2 style= "margin-top: 2em">Checkout Our Stations Around the Pioneer Valley!</h2>
       </div>
-        <p style= "margin-bottom: 3em;"> Search for a station near your location or click on a station marker below.</p>
+      <div class= "button" style= "margin-top: 2em">
+      <%= link_to("Return Bike", edit_rental_path(rental), class: 'action edit') %></div>
+      <div class= "button" style= "margin-top: 2em">
+      <%= link_to("View all rentals", rental_path) %></div>
+    </div>
     </div>
   </div>
   

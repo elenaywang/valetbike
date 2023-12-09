@@ -3,14 +3,14 @@
 <tr>
   <td><%= @rental.station_id %></td>
   <td><%= @rental.bike_id %></td>
-  <td><%= (@rental.checkout).strftime("%A %d/%m/%Y %I:%M %p")%></td> 
+  <td><%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td> 
   <%if @rental.return != nil %>
-    <td><%= (@rental.return).strftime("%A %d/%m/%Y %I:%M %p")%></td>
+    <td><%= (@rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
     <td><%= @rental.duration %></td>
   <% else %>
     <td class="actions">
         <td><%= @rental.number %></td>
-        <%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %>
+        <td><%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %></td>
     </td>
   <%end%>
 </tr>
