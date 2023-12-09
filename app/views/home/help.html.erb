@@ -45,6 +45,7 @@
 
   .faq-content {
     display: none;
+
   }
 
   .dropdown {
@@ -52,10 +53,11 @@
   }
 
   .dropdown-content {
-    display: none;
+    display: block;
     position: relative;
     background-color: #e3fad7; 
-    min-width: 160px;
+    width: 1050px;
+    color: #3a853d;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 12px;
     z-index: 1;
@@ -82,15 +84,8 @@
   }
 
   .green-button {
-    background-color: #4CAF50; 
-    color: white; /* Text color */
-    padding: 10px 20px; /* Padding around the text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style on hover */
-    font-size: 16px; /* Font size */
-    
-  }
+  display: none; /* Hide the button */
+}
 
   .faq-question{
     font-weight: bold;
@@ -98,6 +93,13 @@
 
   .green-button:hover {
     background-color: #45a049; 
+  }
+
+  .h2 {
+  font-weight: bold;
+  color: #2c632e; /* Green color */
+  font-size: 20px; /* Adjust the font size as needed */
+  margin-bottom: 10px; /* Add some bottom margin for spacing */
   }
 
 </style>
@@ -124,7 +126,7 @@
 
     <div id = "faq">
       <div class="dropdown" data-turbolinks="false">
-          <button class="green-button">FAQ</button>
+          <h2 class = "h2">Frequently Asked Questions</h2>
           <div class="dropdown-content">
             <a href="#" class="faq-question">How do I rent a bike?</a>
                 <div class="faq-content">
@@ -146,6 +148,22 @@
                 <div class="faq-content">
                     We accept major credit cards and debit cards as forms of payment.
                 </div>
+            <a href="#" class="faq-question" >What do I do if the station I return my bike to is full?</a>
+                <div class="faq-content">
+                    We accept major credit cards and debit cards as forms of payment.
+                </div>
+            <a href="#" class="faq-question" >Can I schedule my rental ahead of time?</a>
+                <div class="faq-content">
+                    We accept major credit cards and debit cards as forms of payment.
+                </div>
+            <a href="#" class="faq-question" >What if my rental code is not working?</a>
+                <div class="faq-content">
+                    We accept major credit cards and debit cards as forms of payment.
+                </div>
+            <a href="#" class="faq-question" >Will I be charged even if I'm not riding the bike?</a>
+                <div class="faq-content">
+                    We accept major credit cards and debit cards as forms of payment.
+                </div>
           </div>
         </div>
       </div>
@@ -153,8 +171,7 @@
 
 
 <script>
-    document.addEventListener('turbo:load', function() {
-    const dropdownButton = document.querySelector('.green-button');
+  document.addEventListener('turbo:load', function() {
     const faqQuestions = document.querySelectorAll('.faq-question');
     const faqContents = document.querySelectorAll('.faq-content');
 
@@ -166,24 +183,22 @@
 
       faqContents.forEach(function(content) {
         if (content !== clickedContent) {
-          content.style.display = 'none'; 
+          content.style.display = 'none';
         }
       });
 
       clickedContent.style.display = (clickedContent.style.display === 'block') ? 'none' : 'block';
     }
 
-    dropdownButton.addEventListener('click', toggleFaqContent);
-
     faqQuestions.forEach(function(question) {
       question.addEventListener('click', toggleFaqContent);
     });
-  });
 
-  
-    $(document).on('turbo:load', function() {
-        toggleFaqContent(event);
-    }); 
+    // Initial display of the first FAQ content
+    if (faqContents.length > 0) {
+      faqContents[0].style.display = 'block';
+    }
+  });
     
 </script>
 

@@ -20,20 +20,22 @@
 #text {
   background-color: #ffffff;
   color: #000000;
+  top: 25%;
   grid-area: text;
 }
 
 #img {
   background-color: #ffffff;
   color: #000000;
+  top: 50%;
   grid-area: img;
 }
 
 #faq {
   grid-area: faq;
-  position: relative; 
-  top: 25%;
-  left: 55%;
+  position:absolute ; 
+  top: 38%;
+  left: 6%;
 }
   
 #stationview{
