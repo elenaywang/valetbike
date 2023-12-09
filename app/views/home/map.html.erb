@@ -5,60 +5,44 @@
   <meta charset="utf-8">
     <title>Display a map on a webpage</title>
       <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans"rel="stylesheet"/>
+      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+      <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+      <style>
+        body { 
+          margin: 0; 
+          padding: 0; 
+        }
+        #map { 
+          position: absolute; 
+          top: 0%; 
+          bottom: 30%; 
+          width: 100%; 
+        }
+        .mapboxgl-popup {
+          max-width: 200px;
+        }
+        .mapboxgl-popup-content {
+          text-align: center; 
+          font-family: 'Open Sans', 
+          sans-serif;
+        }
+      </style>
   </head>
 <body>
 
-<div class= "map-container">
-  <div id= "mapdesc">
-    <div class="page-section flexbox vertical stretch">
-      <div class="section-inner flexbox vertical stretch">
-        <div class="section-title flexbox horizontal center">
-        <h1>Checkout Our Stations Around the Pioneer Valley!</h1>
-        </div>
-        <p> Renting a bike could not be more simple. Search for a station near your location or click on a station marker below.</p>
-        <div id="mapSidebar" class="sidebar">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <% if @stations.present? %>
-              <%= render(partial: "home/row", collection: @stations, as: :station) %>
-            <% else %>
-              <div class="empty">
-                No stations found.
-              </div>
-            <% end %>
-        </div>
-            <div id= "stationview">
-              <button class="openbtn" onclick="openNav()">&#9776; View Stations </button>
-                <script>
-                function openNav() {
-                  document.getElementById("mapSidebar").style.width = "250px";
-                  document.getElementById("stationview").style.marginLeft = "250px";
-                }
-
-                function closeNav() {
-                  document.getElementById("mapSidebar").style.width = "0";
-                  document.getElementById("stationview").style.marginLeft = "0";
-                }
-
-                </script>
-            </div>
-    </div>
-  </div>
-</div>
-
-
-
 <div id="map"></div>
 
+
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
-    const map = new mapboxgl.Map({
+	  mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
+    var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
     center: [-72.64, 42.325], // starting position [lng, lat]
     zoom: 11.5 // starting zoom
   });
   
-  //iterates all stations, creating new location marker for each using longitude and latitude attributes 
   <% @stations.each do |station| %>
     new mapboxgl.Marker({color: 'orange'})
       .setLngLat([<%= station.longitude %>, <%= station.latitude %>])
@@ -68,15 +52,45 @@
     )   
   .addTo(map); 
 <%end%> 
-</script> 
+</script>
 
 
+
+<div class="gen-container">
+  <div id="mapSidebar" class="sidebar">
+      <% if @stations.present? %>
+        <%= render(partial: "home/row", collection: @stations, as: :station) %>
+      <% else %>
+      <div class="empty">
+        No stations found.
+      </div>
+    <% end %>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  </div>
+
+
+  <div>
+    <button class="openbtn" onclick="openNav()">&#9776; View Stations </button>
+  </div>
 </div>
+
+<script>
+function openNav() {
+  document.getElementById("mapSidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mapSidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+</script>
+
+
+
+
+
+
 </body>
 </html>
-
-
-
-
-
-

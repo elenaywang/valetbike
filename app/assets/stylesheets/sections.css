@@ -17,6 +17,24 @@
   grid-area: howto;
 }
 
+#text {
+  background-color: #ffffff;
+  color: #000000;
+  grid-area: text;
+}
+
+#img {
+  background-color: #ffffff;
+  color: #000000;
+  grid-area: img;
+}
+
+#faq {
+  grid-area: faq;
+  position: relative; 
+  top: 25%;
+  left: 55%;
+}
   
 #stationview{
   grid-area: stationview;
