@@ -1,14 +1,19 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
   <%= station.name %> (<%= station.address %>) 
 
-  <% if station.docked_bikes.count > 0 %>
+  <% if user_signed_in? && !current_user.rentals.where(return: nil).empty? %>
+    <ul style= "background-color: #78a350;">
+    <li><%= link_to("Return a bike to this station", edit_rental_path(id: @active_rental, station_id: station), class: 'action edit') %>
+    <%= station.docked_bikes.count %> bikes</li>
+    </ul>
+  <% elsif station.docked_bikes.count == 0 %>
+    <ul style= "background-color: #bcbcbc;">
+    There are currently 0 bikes at this station. Check back later!
+    </ul>
+  <% else %>
     <ul style= "background-color: #78a350;">
     <li><%= link_to("Rent a bike at this station", new_station_rental_path(station)) %>
     <%= station.docked_bikes.count %> bikes</li>
-    </ul>
-  <% else %>
-    <ul style= "background-color: #bcbcbc;">
-    There are currently 0 bikes at this station. Check back later!
     </ul>
   <% end %>
 

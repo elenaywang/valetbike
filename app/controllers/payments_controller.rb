@@ -31,7 +31,7 @@ class PaymentsController < ApplicationController
             @payment.user = @user
                 if @payment.save                        
                     flash.notice = "Payment information saved"
-                    @user.payment = @payment
+                    current_user.update_column(:payment_id, @payment.id)
                     redirect_to user_payments_path
                 else
                     flash.alert = "Unable to save payment information. Please ensure all information is valid."

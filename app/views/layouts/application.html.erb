@@ -46,7 +46,11 @@
     <nav>
       <ul>
           <li><%= link_to('Explore', explore_home_index_path) %>
-          <li><%= link_to('Rent Bike', map_home_index_path ) %></li>
+          <% if user_signed_in? && !current_user.rentals.where(return: nil).empty? %>
+            <li><%= link_to('Return Bike', map_home_index_path ) %></li>
+          <% else %>
+            <li><%= link_to('Rent Bike', map_home_index_path ) %></li>
+          <% end %>
           </li><li><%= link_to('Pricing', pricing_home_index_path) %></li>
           <li><%= link_to('Help', help_home_index_path) %></li>
           <% if user_signed_in? %>
