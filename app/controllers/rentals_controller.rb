@@ -2,12 +2,14 @@ class RentalsController < ApplicationController
   before_action :authenticate_user!     # forces user to log in before renting a bike
   before_action :set_rental, only: [:show, :edit, :update]
   before_action :set_station, :ask_for_payment, :prevent_multi_rentals, :station_has_bikes, only: [:new, :create]
+  before_action :user_access, only: [:edit, :show, :prevent_return_old_rental]
   before_action :prevent_return_old_rental, only: [:edit, :update]   # prevent user from returning a rental that was already returned
   before_action :current_time, only: [:create, :update]
 
 
   def index
     @rentals = current_user.rentals
+    
   end
   
   def new
@@ -103,5 +105,14 @@ class RentalsController < ApplicationController
   def current_time
     @current_time = Time.now
   end
+
+  def user_access
+    @rental = Rental.find_by(params[:id])
+    if @rental.borrower != current_user
+      flash[:notice] = "Cannot access rentals made by other users"
+      redirect_to rentals_path
+    end
+  end
+    
 
 end
