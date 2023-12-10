@@ -60,7 +60,12 @@ class PaymentsController < ApplicationController
     def update
         @user = current_user
         @payment = Payment.find_by(user_id: current_user.id)
-        if @payment.update(payment_params)
+        # if @payment.valid?
+        #     Rails.logger.info("okay")
+        # else
+        #     Rails.logger.info("no")
+        # end
+        if @payment.update(payment_params) && @payment.valid?
             flash.notice = "Payment information updated"
             redirect_to profile_home_index_path
         else
