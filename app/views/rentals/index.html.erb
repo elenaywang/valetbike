@@ -17,7 +17,8 @@
       <td><%= (rental.checkout).strftime("%A %d/%m/%Y %I:%M %p")%></td> 
       <%if rental.return != nil %>
         <td><%= (rental.return).strftime("%A %d/%m/%Y %I:%M %p")%></td>
-        <td><%= rental.duration %></td>
+        <td><%= rental.duration %> minutes</td>
+        <td>$<%= rental.cost %></td>
       <% else %>
         <td class="actions">
             <td><%= rental.number %></td>

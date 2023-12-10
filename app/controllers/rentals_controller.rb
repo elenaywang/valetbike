@@ -41,6 +41,7 @@ class RentalsController < ApplicationController
   def update
     if @rental.update(rental_params)
       @rental.update(return: @current_time)
+      @rental.update(cost: @rental.duration*0.05)
       bike = @rental.bike
       bike.update(current_station_id: @rental.station_id)
       redirect_to rental_path(@rental)
