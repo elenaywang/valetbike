@@ -5,9 +5,13 @@
   <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
       <div class="section-title flexbox horizontal center">
-        <h2 style= "margin-top: 2em">Checkout Our Stations Around the Pioneer Valley!</h2>
+        <h2 style= "margin-top: 2em">Check out Our Stations Around the Pioneer Valley!</h2>
       </div>
-        <p style= "margin-bottom: 3em;"> Search for a station near your location or click on a station marker below.</p>
+        <% if user_signed_in? && !current_user.rentals.where(return: nil).empty? %>
+          <p style= "margin-bottom: 3em;"> Done riding? Select a station from the sidebar to return your bike!</p>
+        <% else %>
+          <p style= "margin-bottom: 3em;"> Ready to ride? View the station locations in the map below, and select a station from the sidebar to rent a bike!</p>
+        <% end %>
     </div>
   </div>
   
