@@ -18,7 +18,7 @@
       <%if rental.return != nil %>
         <td><%= (rental.return).strftime("%A %d/%m/%Y %I:%M %p")%></td>
         <td><%= rental.duration %> minutes</td>
-        <td>$<%= rental.cost %></td>
+        <td>$<%= number_with_precision(rental.cost, precision: 2) %></td>
       <% else %>
         <td class="actions">
             <td><%= rental.number %></td>
