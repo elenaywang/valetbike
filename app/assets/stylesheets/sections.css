@@ -18,15 +18,14 @@
 }
 
 #text {
-  background-color: #ffffff;
-  color: #000000;
-  top: 25%;
+  background-color: #0b6401;
+  color: #ffffff;
+  top: 15%;
   grid-area: text;
 }
 
 #img {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #0b6401;
   top: 50%;
   grid-area: img;
 }

@@ -30,20 +30,19 @@
 
   .centered {
     top: 13%;
-    left: 70%;
+    left: 44%;
     transform: translate(-50%, -50%);
     text-align: right;
   }
 
   .centered img {
-    max-width: 500px;
-    max-height: 500px;
-    margin-top: 10%;
+    position: absolute;
+    max-width: 700px;
+    max-height: 700px;
   }
 
   .faq-content {
     display: none;
-
   }
 
   .dropdown {
@@ -74,7 +73,7 @@
     padding: 10px;
     text-decoration: none;
     color: #333; 
-    transition: background-color 0.3s; /* Smooth transition on hover */
+    transition: background-color 0.3s;
   }
 
   .dropdown-content a:hover {
@@ -82,23 +81,16 @@
     background-color: #a2e1a1; 
   }
 
-  .green-button {
-  display: none; /* Hide the button */
-}
 
   .faq-question{
     font-weight: bold;
   }
 
-  .green-button:hover {
-    background-color: #45a049; 
-  }
-
   .h2 {
   font-weight: bold;
-  color: #2c632e; /* Green color */
-  font-size: 20px; /* Adjust the font size as needed */
-  margin-bottom: 10px; /* Add some bottom margin for spacing */
+  color: #2c632e; 
+  font-size: 20px; 
+  margin-bottom: 10px; 
   }
 
 </style>
@@ -113,14 +105,15 @@
         <div class="section-title flexbox horizontal center">
           <h1 style = "margin-top: 10%">Meet the ClemenTeam</h1>
         </div>
-        <p>We are a team of five dedicated computer science students, class of 2025, passionate about contributing to the progress and well-being of our city's population. Through hard work and innovation, we have created a bike renting website that provides an affordable and convenient solution for people in the valley to get around. Our commitment to sustainable transportation aims to make a positive impact on both the community and the environment.</p>
+        <p>Five dedicated computer science students, class of 2025, passionate about contributing to the progress and well-being of our city's population. Through hard work and innovation, we have created a bike renting website that provides an affordable and convenient solution for people in the valley to get around. Our commitment to sustainable transportation aims to make a positive impact on both the community and the environment.</p>
       </div>
+    </div>
     </div>
   
     <div id = "img">
-      <div class="centered">
-        <%= image_tag('clementeam.png') %>
-      </div>
+          <div class="centered">
+           <%= image_tag('team.png') %>
+          </div>
     </div>
 
     <div id = "faq">
@@ -166,7 +159,7 @@
           </div>
         </div>
       </div>
-    </div>
+
 
 
 <script>
