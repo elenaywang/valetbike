@@ -94,9 +94,8 @@
 .back-picture img {
   align-items: center;
   justify-content: center;
-  border-radius: 25%;
-  width: 990px; /* Set your desired width */
-  height: 130px; /* Set your desired height */
+  width: 230vh; /* Set your desired width */
+  height: 100vh; /* Set your desired height */
   z-index: 1;
 }
 

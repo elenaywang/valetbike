@@ -1,5 +1,13 @@
 
+<div id="background-photo">
+  <div class="back-picture">
+    <%= image_tag('background.png') %>
+  </div> 
+</div>
+
+
 <div class="profile-container">
+
   <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
         <div class="container">
@@ -11,7 +19,7 @@
                       <div class="profile-picture">
                         <%= image_tag('user_profile.png') %>
               
-                          <div id="name">
+                          <div id="name" style = "font-weight: bold">
                               <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
                           </div>
                       </div>
@@ -27,8 +35,6 @@
                           <%= link_to "Current rental", rental_path(@active_rental.id), class: 'profile-button' %>
                       <% end %>
                     <% end %>
-
-       
           </div>
         </div>
       </div>

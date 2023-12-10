@@ -72,6 +72,7 @@ header::after {
   grid-template-areas:
   "photo photo"
   "name name"
+  "background-photo background-photo background-photo background-photo"
 }
 
 
@@ -108,17 +109,21 @@ footer ul{
 }
 
 .profile-column{
+  z-index: 2;
   border-radius: 25px;
-  background-color: #cfad47;
+  border-color: #cfad47;
+  border-width: thick;
+  background-color: #ffffff;
   color: #69b962;
   padding: 3em 1em 3em 1em;
-  width: 170%;
+  width: 25%;
+  margin-left: 870px;
 }
 
 .profile-row {
   display: block;
   margin-top: 190px;
-  margin-bottom: 180px;
+  margin-bottom: 170px;
 }
 
 .column h1{
