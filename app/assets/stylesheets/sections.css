@@ -57,6 +57,53 @@
   grid-area: gen;
 }
 
+#photo {
+  position: relative;
+  z-index: 2;
+}
+
+#background-photo {
+  position: absolute;
+  z-index: 1;
+}
+
+#name {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  font-size: 24px; /* Adjust the font size as needed */
+  font-family: sans-serif; /* Replace 'YourFont' with the desired font-family */
+  color: #075c11; /* Set your desired text color */
+  left: 50px;
+  padding-top: 0px;
+}
+
+.profile-picture img {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  border-radius: 50%;
+  width: 90px; /* Set your desired width */
+  height: 90px; /* Set your desired height */
+  border: 4px solid #fff; /* Optional: Add a border to the profile picture */
+  z-index: 2;
+  left: 50px;
+}
+
+.back-picture img {
+  align-items: center;
+  justify-content: center;
+  border-radius: 25%;
+  width: 990px; /* Set your desired width */
+  height: 130px; /* Set your desired height */
+  z-index: 1;
+}
+
+.profile-info h2 {
+  margin: 0;
+}
+
 
 .centered {
   position: absolute;
@@ -66,6 +113,13 @@
   text-align: center;
 }
 
+.profile-centered {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 
 .centered img{
   max-width: 750px;

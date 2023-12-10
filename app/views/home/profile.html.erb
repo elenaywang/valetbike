@@ -1,20 +1,40 @@
-<div class= "gen-container">
-  <div id= "general">
-    <div class="page-section flexbox vertical stretch">
-      <div class="section-inner flexbox vertical stretch">
-        <div class="section-title flexbox horizontal center">
-            <h2"><%= current_user.first_name %>'s profile!</h2>
+
+<div class="profile-container">
+  <div class="page-section flexbox vertical stretch">
+    <div class="section-inner flexbox vertical stretch">
+        <div class="container">
+          <div class= "profile-centered">
+            <div class="profile-row" >
+              <div class="profile-column" style = "text-align: center">
+
+                    <div id="photo" class="photo-profile">
+                      <div class="profile-picture">
+                        <%= image_tag('user_profile.png') %>
+              
+                          <div id="name">
+                              <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
+                          </div>
+                      </div>
+                    </div>
+
+                    <% if user_signed_in? %>
+                          <%= link_to "Edit My Info", edit_user_registration_path, class: 'profile-button' %>
+                        <% unless current_user.payment_id.nil? %>
+                          <%= link_to "Edit Payment", edit_user_payment_path(id: current_user.payment_id, user_id: current_user.id), class: 'profile-button' %>
+                        <% end %>
+                          <%= link_to "My Rentals", rentals_path, class: 'profile-button' %>
+                        <% unless current_user.rentals.where(return: nil).empty? %>
+                          <%= link_to "Current rental", rental_path(@active_rental.id), class: 'profile-button' %>
+                      <% end %>
+                    <% end %>
+
+       
+          </div>
         </div>
-          <% if user_signed_in? %>
-            <div class="flexbox vertical center" style="margin: 3em;">
-              <%= link_to "Edit My Info", edit_user_registration_path, class: 'button' %>
-              <%= link_to "My Rentals", rentals_path, class: 'button' %>
-              <% unless current_user.rentals.where(return: nil).empty? %>
-                <%= link_to "Current rental", rental_path(@active_rental.id), class: 'button' %>
-              <% end %>
-            </div>
-          <% end %>
       </div>
     </div>
+   </div>
   </div>
 </div>
+   
+

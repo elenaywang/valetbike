@@ -16,7 +16,25 @@ header {
     padding: 8px;
     margin-right: 350px;
     margin-top: 40px;
-}S
+}
+
+.profile-button{
+    display: block;
+    color: white;
+    border-radius: 10%;
+    background-color: #78a350;
+    text-align: center;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.profile-button:hover {
+    background-color: #426521;
+    border-radius: 10%;
+    transition: background-color 0.3s;
+}
+
 
 .button form:hover {
     background-color: #59882d;
