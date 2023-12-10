@@ -5,26 +5,24 @@
 
   <h2>Your rentals</h2>
 
+  <%= render(partial: "rentals/table_header") %>
+
+
   <table class="listing" summary="Rental list" style="width: 100%;">
-    <tr class="header">
-      <th>Checkout time</th>
-      <th>Return time</th>
-      <th>Station</th>
-      <th>Bike id</th>
-      <th>Rental code</th>
-    </tr>
+
     <% @rentals.each do |rental| %>
     <tr>
-      <td><%= rental.checkout%></td> 
-      <td><%= rental.return %></td>
       <td><%= rental.station_id %></td>
       <td><%= rental.bike_id %></td>
-      <td><%= rental.number %></td>
-      <td class="actions">
-        <%= link_to("Edit", edit_rental_path(rental), class: 'action edit') %>
-        <%= link_to("Cancel", '#', class: 'action delete') %>
-        <%= link_to("Return Bike", '#') %>
-      </td>
+      <td><%= (rental.checkout).strftime("%A %d/%m/%Y %I:%M %p")%></td> 
+      <%if rental.return != nil %>
+        <td><%= (rental.return).strftime("%A %d/%m/%Y %I:%M %p")%></td>
+        <td><%= rental.duration %></td>
+      <% else %>
+        <td class="actions">
+            <td><%= rental.number %></td>
+            <%= link_to("Return Bike", edit_rental_path(rental), class: 'action edit') %></td>
+      <%end%>
     </tr>
     <% end %>
   </table>

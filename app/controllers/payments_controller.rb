@@ -87,6 +87,7 @@ class PaymentsController < ApplicationController
     end
 
     private
+    
     def payment_params
       params.require(:payment).permit(:first_name, :last_name, :card_number, :cvv, :exp_month, :exp_year)
     end
