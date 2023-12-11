@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_10_215551) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_10_230333) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_10_215551) do
     t.datetime "updated_at", null: false
     t.string "number"
     t.float "cost"
+    t.integer "return_station_id"
   end
 
   create_table "stations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
