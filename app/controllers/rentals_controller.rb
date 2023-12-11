@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
     @rental = Rental.new(
       number: "%07d" % rand(10000000),
       borrower: current_user,
-      station_id: @station.id,
+      checkout_station: @station,
       bike: Bike.where(current_station_id: @station.id).first,
       checkout: @current_time)
     
@@ -37,15 +37,15 @@ class RentalsController < ApplicationController
   end
 
   def edit
-    @rental.update(station_id: @station.id)
+    @rental.update(return_station_id: @station.id)
   end
 
   def update
     if @rental.update(rental_params)
       @rental.update(return: @current_time)
-      @rental.update(cost: @rental.duration*0.05) 
+      @rental.update(cost: @rental.duration*0.05) #one day rate should not be hard coded :)
       bike = @rental.bike
-      bike.update(current_station_id: @rental.station_id)
+      bike.update(current_station_id: @rental.return_station_id)
       redirect_to rental_path(@rental)
     else
       render('edit')
@@ -55,7 +55,7 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:checkout, :station_id, :return)
+    params.require(:rental).permit(:checkout, :station_id, :return_station_id, :return, :checkout_station, :return_station)
   end
 
   def set_station
