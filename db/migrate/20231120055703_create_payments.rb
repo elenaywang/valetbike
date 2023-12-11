@@ -7,7 +7,7 @@ class CreatePayments < ActiveRecord::Migration[7.0]
       t.integer :cvv
       t.integer :exp_month
       t.integer :exp_year
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, on_delete: :cascade
 
       t.timestamps
     end

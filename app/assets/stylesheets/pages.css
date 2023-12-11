@@ -53,7 +53,16 @@ header::after {
   "gen gen gen gen" 
 }
 
-
+.about-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .8fr .5fr .2fr 1.5fr;
+  grid-template-areas:
+  "text text img img" 
+  "faq faq faq faq"
+}
+ 
 footer {
   grid-row: 3;
   bottom: 0;
