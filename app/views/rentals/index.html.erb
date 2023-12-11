@@ -49,13 +49,13 @@
         <tr>
             
             <%if rental.return != nil %>
-            <td><%= rental.return_station.name %></td>
-            <td><%= rental.checkout_station.name %></td>
-            <td><%= rental.bike_id %></td>
-            <td><%= (rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td> 
-            <td><%= (rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
-            <td><%= pluralize(rental.duration, 'minute')%></td>
-            <td>$<%= number_with_precision(rental.cost, precision: 2) %></td>
+              <td><%= rental.checkout_station.name %></td>
+              <td><%= rental.return_station.name %></td>
+              <td><%= rental.bike_id %></td>
+              <td><%= (rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td> 
+              <td><%= (rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
+              <td><%= pluralize(rental.duration, 'minute')%></td>
+              <td>$<%= number_with_precision(rental.cost, precision: 2) %></td>
             <% end %>
         </tr>
     <% end %>
