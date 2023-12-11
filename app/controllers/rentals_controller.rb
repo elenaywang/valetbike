@@ -93,7 +93,8 @@ class RentalsController < ApplicationController
 
   # checks if the user has provided their payment info
   def ask_for_payment
-    if current_user.payment_id.nil?
+    @payment = Payment.find_by(user_id: current_user.id)
+    if @payment.nil?
       # redirects if current user has no payment info
       flash[:notice] = 'Please input your payment information.'
       redirect_to new_user_payment_path(current_user.id)

@@ -7,6 +7,6 @@ class User < ApplicationRecord
          
   has_many :rentals, foreign_key: :borrower_id
 
-  has_one :payment
+  has_one :payment, dependent: :destroy
 
 end
