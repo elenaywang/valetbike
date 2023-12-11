@@ -73,10 +73,9 @@
 
 
   <script>
-  // Check if 'map' is already defined
 
     mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
-    const map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: [-72.64, 42.325], // starting position [lng, lat]
@@ -93,9 +92,11 @@
         )
         .addTo(map);
     <% end %>
+    map.scrollZoom.disable();
+ 
   </script>
 
-
+ 
  
 
 </div>
