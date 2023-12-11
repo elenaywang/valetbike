@@ -16,12 +16,12 @@
     </li>
   <% elsif station.docked_bikes.count == 0 %>
     <ul style= "background-color: #bcbcbc; border-radius: 8px;">
-    There are currently 0 bikes at this station. Check back later!
+      There are currently 0 bikes at this station. Check back later!
     </ul>
   <% else %>
     <li>
       <div style = "font-style: italic; color: #58783a">
-          <%= pluralize(station.docked_bikes.count, 'bike') %>
+          <%= pluralize(station.docked_bikes.count, 'bike') %> available
       </div>
       <div style = "border-radius: 8px; font-weight: bold; text-align: center;">
         <%= link_to("Rent a bike at this station", new_station_rental_path(station), class: 'rent-button') %>
