@@ -3,7 +3,6 @@ class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update]
   before_action :set_station, only: [:new, :create, :edit]
   before_action :ask_for_payment, :prevent_multi_rentals, :station_has_bikes, only: [:new, :create]
-  # before_action :set_station, :ask_for_payment, :prevent_multi_rentals, :station_has_bikes, only: [:new, :create]
   before_action :prevent_return_old_rental, only: [:edit, :update]   # prevent user from returning a rental that was already returned
   before_action :current_time, only: [:create, :update]
 
