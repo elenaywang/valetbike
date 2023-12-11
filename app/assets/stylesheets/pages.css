@@ -121,7 +121,7 @@ footer ul{
 
 .profile-row {
   display: block;
-  margin-top: 190px;
+  position: static;
   margin-bottom: 170px;
 }
 
