@@ -7,8 +7,11 @@
 
   <% if user_signed_in? && !current_user.rentals.where(return: nil).empty? %>
     <li>
+      <div style = "font-style: italic; color: #58783a">
+          <%= pluralize(station.docked_bikes.count, 'bike') %>
+      </div>
       <div style = "border-radius: 8px; font-weight: bold; text-align: center;">
-        <%= link_to("Return a bike to this station", edit_rental_path(id: @active_rental, station_id: station), class: 'action edit') %>
+        <%= link_to("Return a bike to this station", edit_rental_path(id: @active_rental, station_id: station), class: 'action edit', class: 'rent-button') %>
       </div>
     </li>
   <% elsif station.docked_bikes.count == 0 %>
@@ -21,7 +24,7 @@
           <%= pluralize(station.docked_bikes.count, 'bike') %>
       </div>
       <div style = "border-radius: 8px; font-weight: bold; text-align: center;">
-        <%= link_to("Rent a bike at this station", new_station_rental_path(station)) %>
+        <%= link_to("Rent a bike at this station", new_station_rental_path(station), class: 'rent-button') %>
       </div>
     </li>
   <% end %>

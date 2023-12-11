@@ -14,7 +14,25 @@
 .button a:hover {
     background-color: #59882d;
 }
- 
+
+.rent-button{
+    display: block;
+    color: white;
+    border-radius: 10%;
+    background-color: #78a350;
+    text-align: center;
+    padding: 8px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 70%;
+}
+
+.rent-button:hover {
+    background-color: #d39510;
+    border-radius: 10%;
+    transition: background-color 0.3s;
+}
 
 nav{
     float:right
