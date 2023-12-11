@@ -11,7 +11,9 @@ class Payment < ApplicationRecord
 
   private
   def valid_expiry?
-    if exp_year == Time.current.year && exp_month.to_i >= Time.current.month
+    if exp_year.nil? or exp_month.nil?
+      false
+    elsif exp_year == Time.current.year && exp_month.to_i >= Time.current.month
       true
     elsif exp_year > Time.current.year && exp_month.present?
       true
