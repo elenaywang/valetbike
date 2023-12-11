@@ -2,14 +2,13 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, only: [:profile]
 
     before_action :set_active_rental, only: [:map, :profile]    # defines a user's currently active rental if they have one
-
+    
     def index
-      @stations = Station.all.order(identifier: :asc)
-
-      respond_to do |format|
-        format.html
-        format.json {render json: @stations }
-      end 
+      if params[:station].present?
+        @stations = Station.near(params[:station])
+      else
+        @stations = Station.all.order(identifier: :asc)
+      end
     end
   
     def map
@@ -41,5 +40,6 @@ class HomeController < ApplicationController
         @active_rental = current_user.rentals.where(return: nil).first
       end
     end
+
 
 end

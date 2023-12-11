@@ -1,25 +1,62 @@
-<%= form_for [@user, @payment] do |form|  %>
-    <%= render "devise/shared/error_messages", resource: @payment %>
-    <div class = "fields">
-        <%= form.label :first_name %>
-        <%= form.text_field :first_name %>
-        
-        <%= form.label :last_name %>
-        <%= form.text_field :last_name %>
-        
-        <%= form.label :card_number %>
-        <%= form.text_field :card_number %>
-        
-        <%= form.label :cvv %>
-        <%= form.number_field :cvv %>
-        
-        <%= form.label :exp_month%>
-        <%= form.number_field :exp_month %>
-        
-        <%= form.label :exp_year%>
-        <%= form.number_field :exp_year %>
+
+
+<div class= "gen-container">
+<div id= "general">
+  <div class="page-section flexbox vertical stretch">
+    <div class="section-inner flexbox vertical stretch">
+      <div class="container">
+      <div class= "centered">
+        <div class="row" >
+      <div class="column" style= "border-color: #78a350; border-width: thick; padding: 1em;">
+       
+          <div class="section-title flexbox horizontal center">
+              <h2>Payment Info</h2>
+          </div>
+      
+        <%= form_for [@user, @payment] do |form| %>
+            <div class= "field">
+                <%= form.label :first_name %> <br />
+                <%= form.text_field :first_name, placeholder: "Enter Your First Name" %>
+              </div>
+              <div class="field">     
+                <%= form.label :last_name %> <br />
+                <%= form.text_field :last_name, placeholder: "Enter Your Last Name"%>
+              </div>
+              <div class="field">  
+                <%= form.label :cvv %> <br />
+                <%= form.number_field :cvv , placeholder: "Enter Your 3 digit cvv" %>
+              </div>
+              <div class="field">   
+                <%= form.label :card_number %> <br />
+                <%= form.text_field :card_number, placeholder: "Enter your 16 digit card number" %>
+              </div>
+              
+              <div class="field">   
+                <%= form.label :exp_month%> <br />
+                <%= form.number_field :exp_month , placeholder: "(MM)" %>
+              </div>
+              <div class="field">
+                <%= form.label :exp_year%> <br />
+                <%= form.number_field :exp_year, placeholder: "(YYYY)" %>
+              </div>
+           
+              <div id="errors">
+                <% if @payment.errors.any? %>
+                    <ul>
+                    <% @payment.errors.full_messages.each do |msg| %>
+                        <li><%= msg%></li>
+                    <% end %>
+                    </ul>
+                <% end %>
+              </div>
+                  <div class= "action">
+                      <%= form.submit %>
+                  </div>
+                  </div>
+              <% end %>
+           
+         
     </div>
-    <div class = "action">
-        <%= form.submit %>
-    </div>
-    <% end %>
+  </div>
+</div>
+</div>

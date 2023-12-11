@@ -1,79 +1,76 @@
-<html>
-<head>
-<style>
-body{
-  background-color: #b1e695;
-}
-</style>
-</head>
-<body>
-<div class= "reglog-container">
-  <div id= "reglog">
-  <div class="page-section flexbox vertical stretch">
-    <div class="section-inner flexbox vertical stretch">
-      <div class="container">
-      <div class= "centered">
-        <div class="row">
-          <div class="column" style = "text-align: center">
-            <div class="section-title flexbox horizontal center">
-              <h2>Register</h2>
-            </div>
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                  <%= render "devise/shared/error_messages", resource: resource %>
-                
-                  <div class="field">
-                    <%= f.label :first_name %><br />
-                    <%= f.text_field :first_name %>
-                  </div>
 
-                  <div class="field">
-                    <%= f.label :last_name %><br />
-                    <%= f.text_field :last_name %>
-                  </div>
-                  
-                  <div class="field">
-                    <%= f.label :birthday %><br />
-                    <%= f.date_field :birthday %>
-                  </div>
+<div id="background-photo">
+  <div class="back-picture">
+    <%= image_tag('backg_2.png') %>
+  </div> 
+</div>
 
-                  <div class="field">
-                    <%= f.label :phone_number %><br />
-                    <%= f.telephone_field :phone_number %>
-                  </div>
 
-                  <div class="field" style= "placeholder: 'Enter your email';">
-                    <%= f.label :email %><br />
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                  </div>
+<div class= "gen-container">
+<div id= "general">
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="container">
+    <div class= "centered">
+      <div class="row" >
+        <div class="column" style= "border-color: #78a350; border-width: thick; padding: 1em;">
+          <div class="section-title flexbox horizontal center">
+          <h2>Register</h2>
+         </div>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+                <%= render "devise/shared/error_messages", resource: resource %>
+                <div class="field">
+                  <%= f.label :first_name, class: "form-label" %><br />
+                  <%= f.text_field :first_name, placeholder: "Enter your first name" %>
+                </div>
+
+                <div class="field">
+                <%= f.label :last_name, class: "form-label" %><br />
+                <%= f.text_field :last_name, placeholder: "Enter your last name"  %>
+              </div>
+
+                <div class="field">
+                <%= f.label :email, class: "form-label" %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email"  %>
+              </div>
                 
-                  <div class="field">
-                    <%= f.label :password %>
-                    <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %><br />
-                    <%= f.password_field :password, autocomplete: "new-password" %>
-                  </div>
+                <div class="field">
+                  <%= f.label :birthday, class: "form-label" %><br />
+                  <%= f.date_field :birthday %>
                 
-                  <div class="field">
-                    <%= f.label :password_confirmation %><br />
-                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                  </div>
+                </div>
+
+                <div class="field">
+                  <%= f.label :phone_number, class: "form-label" %><br />
+                  <%= f.telephone_field :phone_number, placeholder: "Enter your phone number"  %>
+                </div>
                 
-                  <div class="actions">
-                    <div class= button style= "margin-top: 2em">
-                      <%= f.submit "Register" %>
-                    </div>
+                <div class="field">
+                  <%= f.label :password, class: "form-label" %>
+                  <% if @minimum_password_length %>
+                  <em style= "font-size: 13px;">(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter your password"  %>
+                </div>
+              
+                <div class="field">
+                  <%= f.label :password_confirmation, class: "form-label" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm your password"  %>
+                </div>
+      
+                <div class="actions">
+                    <%= f.submit "Register" %>
                   </div>
-                <% end %>
+           
+              <% end %>
                 <%= render "devise/shared/links" %>
                 </div>
-            </div>
           </div>
-        </div>
-      </div>
+          </div>
+          </div>
+            </div>
     </div>
   </div>
-</div>  
-</div>    
-</body>
-</html>
+</div>
+</div>
