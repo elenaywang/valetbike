@@ -12,7 +12,7 @@
   <% else %>
     <td class="actions">
         <td><%= @rental.number %></td>
-        <td><%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %></td>
+        <td><%= link_to("Return Bike", edit_rental_path(id: @rental, station_id: @rental.checkout_station.id), class: 'action edit') %></td>
     </td>
   <%end%>
 </tr>
