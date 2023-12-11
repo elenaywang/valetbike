@@ -31,7 +31,6 @@ class PaymentsController < ApplicationController
             flash.notice = "Payment information saved"
             redirect_to profile_home_index_path
         else
-            flash.now[:alert] = "Unable to save payment, please ensure all information is valid"
             render(action: :new)
         end
     end
