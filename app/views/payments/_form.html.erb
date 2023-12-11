@@ -1,4 +1,5 @@
-<%= form_for [@user, @payment] do |form| %>
+<%= form_for [@user, @payment] do |form|  %>
+    <%= render "devise/shared/error_messages", resource: @payment %>
     <div class = "fields">
         <%= form.label :first_name %>
         <%= form.text_field :first_name %>
@@ -17,9 +18,6 @@
         
         <%= form.label :exp_year%>
         <%= form.number_field :exp_year %>
-    </div>
-    <div id="errors">
-        <%= display_alerts %>
     </div>
     <div class = "action">
         <%= form.submit %>

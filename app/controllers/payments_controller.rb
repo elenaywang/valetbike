@@ -4,14 +4,19 @@ class PaymentsController < ApplicationController
     before_action :check_existing_payment, only: [:new, :create]
     before_action :check_payment_id, only: [:edit, :update]
     
-    # def index
-    #     @payment = Payment.order(:first_name)
-    # end
+    def index
+        @user = current_user
+        @payment = Payment.new
+        render :new
+        #temporary workaround to keep users on the new form in case they reload the page
+    end
 
-    # def show
-    #     #@user = current_user
-    #     @payment = Payment.find_by(user_id: current_user.id)
-    # end
+    def show
+        @user = current_user
+        @payment = Payment.find_by(user_id: current_user.id)
+        render :edit
+        #temporary workaround to keep users on the edit form in case they reload the page
+    end
 
     def new
         @user = current_user
@@ -26,30 +31,8 @@ class PaymentsController < ApplicationController
             flash.notice = "Payment information saved"
             redirect_to profile_home_index_path
         else
-            flash.now[:alert] = "Unable to save payment, please ensure all information is valid"
             render(action: :new)
         end
-        # if @user.payment_id.blank? 
-        #     #CHECK THIS
-        #     @payment = Payment.new(payment_params) 
-        #     @payment.user = @user
-        #         if @payment.save                        
-        #             flash.notice = "Payment information saved"
-        #             #@user.payment = @payment
-        #             #current_user.update_column(:payment_id, @payment.id)
-        #             redirect_to profile_home_index_path
-        #         else
-        #             flash.now[:alert] ||= ""
-        #             @payment.errors.full_messages.each do |message|
-        #             flash.now[:alert] << message + ". "
-        #             end      
-        #             render(action: :new)
-        #             # flash.alert = "Unable to save payment information. Please ensure all information is valid."
-        #             # redirect_to new_user_payment_path
-        #         end
-        # else
-        #     redirect_to user_payment_path
-        # end
     end
 
     def edit
@@ -60,17 +43,11 @@ class PaymentsController < ApplicationController
     def update
         @user = current_user
         @payment = Payment.find_by(user_id: current_user.id)
-        if @payment.update(payment_params)
+        if @payment.update(payment_params) && @payment.valid?
             flash.notice = "Payment information updated"
             redirect_to profile_home_index_path
-        else
-            # flash.alert = "Unable to update payment information. Please ensure all information is valid."
-            # redirect_to edit_user_payment_path
-            flash.now[:alert] ||= ""
-            @payment.errors.full_messages.each do |message|
-              flash.now[:alert] << message + ". "
-            end      
-            render(action: :new)
+        else  
+            render :edit
         end
     end
 
@@ -80,7 +57,6 @@ class PaymentsController < ApplicationController
             redirect_to profile_home_index_path
         end
     end
-    #TEST THIS
     
 
     def check_payment_id
