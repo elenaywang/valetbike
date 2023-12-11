@@ -2,8 +2,9 @@
 <head>
 <style>
 body{
-  background-color: #b1e695;
+  background-color: #ffffff;
 }
+
 </style>
 </head>
 <body>
@@ -14,26 +15,46 @@ body{
      <div class="section-inner flexbox vertical stretch">
           <div class="section-title flexbox horizontal center" style = "text-align: center">
             Our Sweet Pricing Options!
+          </div> 
+          
+
+          <div class="page-section flexbox vertical stretch">
+            <div class="section-inner flexbox vertical stretch">
+               <div style= "max-width: 110px; position: static; margin-left: 80%">
+                    <%= image_tag('naranja.gif') %>
+               </div>
+
+               <div style= "max-width: 110px; position: absolute; margin-left: 25%">
+                    <%= image_tag('naranja.gif') %>
+               </div>
+
+               <div style= "max-width: 110px; position: absolute; margin-left: 5%">
+                    <%= image_tag('naranja.gif') %>
+               </div>
+            </div>
           </div>
 
      <div class="container">
           <div class="row">
                <div class="column">
-                    <h1>One Time Pass</h1>
-                    <p>First 30 minutes: $2.00</p>
-                    <p>Additional time: $0.05/min</p>
+                    <h1>One Time</h1>
+                    <p>First 30 minutes: $1.50</p>
+                    <p>Price per minute: $0.05/min</p>
+                    <%= link_to('Rent Now', map_home_index_path, class: 'pricing-button') %>
                </div>
                <div class="column">
-                    <h1>Monthly Pass</h1>
+                    <h1>Monthly Pass  </h1>
                     <p>One month: $20</p>
                     <p>Unlimited 45 minute trips</p>
                     <p>Additional time: $0.05/min</p>
+                    <%= link_to('Rent Now', map_home_index_path, class: 'pricing-button') %>
                </div>
                <div class="column">
-                    <h1>Annual Pass</h1>
+                    <h1>Annual Pass </h1>
                     <p>One Year: $80</p>
                     <p>Unlimited 45 minute trips</p>
                     <p>Additional time: $0.05/min</p>
+                    <%= link_to('Rent Now', map_home_index_path, class: 'pricing-button') %>
                </div>
           </div>
           <div class="row">
