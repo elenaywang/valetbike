@@ -17,6 +17,17 @@
   grid-area: howto;
 }
 
+#desc{
+  color: #2a5c25;
+  grid-area: desc;
+}
+
+#rdesc{
+  color: #2a5c25;
+  grid-area: rdesc;
+}
+
+
 #text {
   background-color: #0b6401;
   color: #ffffff;

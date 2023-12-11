@@ -1,19 +1,31 @@
-<div>
-  <h1 class="font-bold text-4xl">Return your Bike</h1>
-  <p>We hope you had a fruitful trip!</p>
+<div class= "gen-container">
+  <div id= "general">
+    <div class="page-section flexbox vertical stretch">
+      <div class="section-inner flexbox vertical stretch">
+        <div class="section-title flexbox horizontal center" style = "text-align: center">
+<h1 style= "margin-top: 2em" >Ready to Return?</h1>
+ 
 </div>
 
-
-<div class="rentals edit">
+<h1 class="font-bold text-3xl">Select the station you are returning the bike to. </h1>
+<div class="rentals edit" style= "margin-top: 2em" >
   <h2>Return bike to:</h2>
 
   <%= form_for @rental, method: :patch do |form| %>
 
     <%= form.select :return_station_id, Station.all.collect {|p| [ p.name, p.id ]}, include_blank: true %>
     
-    <div class="form-buttons">
+    <div class="form-buttons" style= "margin-bottom: 2em">
       <%= form.submit "Return now" %>
     </div>
 
   <% end %>
+</div>
+</div>
+</div>
+<div id= "bikeimg" style= "max-width: 200px; position: static; margin: auto;">
+      <%= image_tag('orange full.png') %>
+  </div>
+</div>
+</div>
 </div>

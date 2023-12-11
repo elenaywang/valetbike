@@ -1,7 +1,7 @@
 
 
 <div class= "map-container">
-<div id= "mapdesc">
+<div id= "desc">
   <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
       <div class="section-title flexbox horizontal center">
@@ -31,8 +31,29 @@
 
 <div id="map"></div>
 
-<%=javascript_include_tag 'map' %>
+<script>
 
+mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
+var map = new mapboxgl.Map({
+  container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v12', // style URL
+  center: [-72.64, 42.325], // starting position [lng, lat]
+  zoom: 11.5 // starting zoom
+});
+
+// Iterates all stations, creating new location marker for each using longitude and latitude attributes
+<% @stations.each do |station| %>
+  new mapboxgl.Marker({ color: 'orange' })
+    .setLngLat([<%= station.longitude %>, <%= station.latitude %>])
+    .setPopup(
+      new mapboxgl.Popup({ offset: 25 })
+        .setHTML("<h3><%= station.name %></h3><p>Docked Bike Count: <%= station.docked_bikes.count %></p>")
+    )
+    .addTo(map);
+<% end %>
+map.scrollZoom.disable();
+
+</script>
 
 
 

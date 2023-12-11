@@ -1,29 +1,25 @@
+
 <div id="background-photo">
   <div class="back-picture">
     <%= image_tag('backg_2.png') %>
   </div> 
 </div>
 
-
 <div class="profile-container">
-
   <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
         <div class="container">
           <div class= "profile-centered">
             <div class="profile-row" >
               <div class="profile-column" style = "text-align: center">
-
-                    <div id="photo" class="photo-profile">
+                   <div id="photo" class="photo-profile">
                       <div class="profile-picture">
                         <%= image_tag('user_profile.png') %>
-              
-                          <div id="name" style = "font-weight: bold">
-                              <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
-                          </div>
-                      </div>
+                        <div id="name" style= "font-weight: bold">
+                            <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
+                        </div>
                     </div>
-
+                  </div>
                     <% if user_signed_in? %>
                           <%= link_to "Edit My Info", edit_user_registration_path, class: 'profile-button' %>
                           <%= link_to "Edit Payment", new_user_payment_path(current_user), class: 'profile-button' %>
@@ -32,9 +28,9 @@
                           <%= link_to "Current rental", rental_path(@active_rental.id), class: 'profile-button' %>
                       <% end %>
                     <% end %>
-          </div>
+             </div>
+            </div>
         </div>
-      </div>
     </div>
    </div>
   </div>
