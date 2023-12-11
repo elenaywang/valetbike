@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  validates :phone_number, length: {is: 10}, numericality: {only_integer: true, message: "is not a number"}
+
   has_many :rentals, foreign_key: :borrower_id
 
   has_one :payment, dependent: :destroy
