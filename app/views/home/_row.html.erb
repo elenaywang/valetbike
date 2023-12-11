@@ -1,24 +1,34 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch"> 
   <ul style= "background-color: #b0d47b; border-radius: 8px;">
   <div style = "left: 20;">
-    <%= station.name %> (<%= station.address %>)
+    <strong><%= station.name %></strong> <br>
+    <em>Address:</em> <%= station.address %>
   </div>
 
-  <% if station.docked_bikes.count > 0 %>
-    <li> 
-      <div style = "border-radius: 8px; font-weight: bold;">
-        <%= link_to("Rent a bike", new_station_rental_path(station)) %>
-      </div>
+  <% if user_signed_in? && !current_user.rentals.where(return: nil).empty? %>
+    <li>
       <div style = "font-style: italic; color: #58783a">
-        <%= pluralize(station.docked_bikes.count, 'bike') %> available
+          <%= pluralize(station.docked_bikes.count, 'bike') %>
+      </div>
+      <div style = "border-radius: 8px; font-weight: bold; text-align: center;">
+        <%= link_to("Return a bike to this station", edit_rental_path(id: @active_rental, station_id: station), class: 'action edit', class: 'rent-button') %>
       </div>
     </li>
-  </ul>
-  <% else %>
-    <ul style= "background-color: #bcbcbc;">
-    There are currently 0 bikes at this station. Check back later!
+  <% elsif station.docked_bikes.count == 0 %>
+    <ul style= "background-color: #bcbcbc; border-radius: 8px;">
+      There are currently 0 bikes at this station. Check back later!
     </ul>
+  <% else %>
+    <li>
+      <div style = "font-style: italic; color: #58783a">
+          <%= pluralize(station.docked_bikes.count, 'bike') %> available
+      </div>
+      <div style = "border-radius: 8px; font-weight: bold; text-align: center;">
+        <%= link_to("Rent a bike at this station", new_station_rental_path(station), class: 'rent-button') %>
+      </div>
+    </li>
   <% end %>
+  </ul>
 
  
 </div>

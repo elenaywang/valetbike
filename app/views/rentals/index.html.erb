@@ -12,18 +12,19 @@
 
     <% @rentals.each do |rental| %>
     <tr>
-      <td><%= rental.station_id %></td>
+      <td><%= rental.checkout_station.name %></td>
+      <%if rental.return != nil %><td><%= rental.return_station.name %></td><%end%>
       <td><%= rental.bike_id %></td>
-      <td><%= (rental.checkout).strftime("%A %d/%m/%Y %I:%M %p")%></td> 
+      <td><%= (rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td> 
       <%if rental.return != nil %>
-        <td><%= (rental.return).strftime("%A %d/%m/%Y %I:%M %p")%></td>
-        <td><%= rental.duration %> minutes</td>
+        <td><%= (rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
+        <td><%= pluralize(rental.duration, 'minute')%></td>
         <td>$<%= number_with_precision(rental.cost, precision: 2) %></td>
       <% else %>
         <td class="actions">
             <td><%= rental.number %></td>
-            <td><%= link_to("Return Bike", edit_rental_path(rental), class: 'action edit') %></td>
-      <%end%>
+            <td><%= link_to("Return Bike", edit_rental_path(id: rental, station_id: rental.checkout_station.id), class: 'action edit') %></td>
+      <% end %>
     </tr>
     <% end %>
   </table>

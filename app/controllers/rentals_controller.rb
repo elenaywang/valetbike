@@ -1,7 +1,8 @@
 class RentalsController < ApplicationController
   before_action :authenticate_user!     # forces user to log in before renting a bike
   before_action :set_rental, only: [:show, :edit, :update]
-  before_action :set_station, :ask_for_payment, :prevent_multi_rentals, :station_has_bikes, only: [:new, :create]
+  before_action :set_station, only: [:new, :create, :edit]
+  before_action :ask_for_payment, :prevent_multi_rentals, :station_has_bikes, only: [:new, :create]
   before_action :user_access, only: [:edit, :show, :prevent_return_old_rental]
   before_action :prevent_return_old_rental, only: [:edit, :update]   # prevent user from returning a rental that was already returned
   before_action :current_time, only: [:create, :update]
@@ -21,7 +22,7 @@ class RentalsController < ApplicationController
     @rental = Rental.new(
       number: "%07d" % rand(10000000),
       borrower: current_user,
-      station_id: @station.id,
+      checkout_station: @station,
       bike: Bike.where(current_station_id: @station.id).first,
       checkout: @current_time)
     
@@ -38,14 +39,15 @@ class RentalsController < ApplicationController
   end
 
   def edit
+    @rental.update(return_station_id: @station.id)
   end
 
   def update
     if @rental.update(rental_params)
       @rental.update(return: @current_time)
-      @rental.update(cost: @rental.duration*0.05) 
+      @rental.update(cost: @rental.duration*0.05) #one day rate should not be hard coded :)
       bike = @rental.bike
-      bike.update(current_station_id: @rental.station_id)
+      bike.update(current_station_id: @rental.return_station_id)
       redirect_to rental_path(@rental)
     else
       render('edit')
@@ -55,7 +57,7 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:checkout, :station_id, :return)
+    params.require(:rental).permit(:checkout, :station_id, :return_station_id, :return, :checkout_station, :return_station)
   end
 
   def set_station
