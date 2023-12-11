@@ -1,7 +1,8 @@
 <table class="listing" summary="Rental list" style="width: 90%;">
 
 <tr>
-  <td><%= @rental.station_id %></td>
+  <td><%= @rental.checkout_station.name %></td>
+  <%if @rental.return != nil %><td><%= @rental.return_station.name %></td><%end%>
   <td><%= @rental.bike_id %></td>
   <td><%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td> 
   <%if @rental.return != nil %>
