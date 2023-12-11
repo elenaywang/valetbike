@@ -1,5 +1,5 @@
 //Fetches station data via AJAX (refer to https://www.rubyguides.com/2019/03/rails-ajax/)'
-
+$( document ).on('turbo:load', function() {
    
     mapboxgl.accessToken = 'pk.eyJ1IjoieWxvbzEyMyIsImEiOiJjbG9sdDJxYjAwdHR2Mmxxb2FsaG9nN2lvIn0.OZGWalV5uPOOaCrC7TwbWg';
 
@@ -13,6 +13,7 @@
 
   //initliazes map via mapbox token
     function init_mapmarkers(station) {
+        console.log(station)
         new mapboxgl.Marker({color: 'orange'})
             .setLngLat([station.longitude, station.latitude])
             .setPopup(
@@ -31,6 +32,7 @@
     })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             data.forEach(init_mapmarkers);
         })
         .catch(error => console.error('Error fetch station data:', error));
@@ -38,3 +40,4 @@
 
     document.addEventListener('DOMContentLoaded',loadStations);
 
+});

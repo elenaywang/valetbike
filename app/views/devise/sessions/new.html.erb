@@ -1,36 +1,32 @@
-<html>
-<head>
-<style>
-body{
-  background-color: #b1e695;
-}
-</style>
-</head>
-<body>
+
+<div id="background-photo">
+  <div class="back-picture">
+    <%= image_tag('backg_2.png') %>
+  </div> 
+</div>
+
 <div class= "reglog-container">
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="container">
     <div class= "centered">
       <div class="row" >
-        <div class="column" style = "text-align: center">
+      <div class="column" style= "border-color: #78a350; border-width: thick; padding: 1em;">
           <div class="section-title flexbox horizontal center">
             <h2>Sign in</h2>
           </div>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
               <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email"  %>
             </div>
             <div class="field">
               <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "current-password" %>
+              <%= f.password_field :password, autocomplete: "current-password",  placeholder: "Enter your password"  %>
             </div>
             <div class="actions">
-              <div class= "button" style= "margin-top: 2em">
                 <%= f.submit "Sign in" %>
               </div>
-            </div>
           <% end %>
  
             <%= render "devise/shared/links" %>
@@ -41,5 +37,3 @@ body{
   </div>
 </div>
 </div>
-</body>
-</html>

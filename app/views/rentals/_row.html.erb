@@ -1,20 +1,46 @@
-<table class="listing" summary="Rental list" style="width: 90%;">
 
-<tr>
-  <td><%= @rental.checkout_station.name %></td>
-  <%if @rental.return != nil %><td><%= @rental.return_station.name %></td><%end%>
-  <td><%= @rental.bike_id %></td>
-  <td><%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td> 
-  <%if @rental.return != nil %>
-    <td><%= (@rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
-    <td><%= @rental.duration %> minutes </td>
-    <td>$<%= number_with_precision(@rental.cost, precision: 2) %></td>
-  <% else %>
-    <td class="actions">
-        <td><%= @rental.number %></td>
-        <td><%= link_to("Return Bike", edit_rental_path(id: @rental, station_id: @rental.checkout_station.id), class: 'action edit') %></td>
-    </td>
-  <%end%>
-</tr>
 
-</table>
+<div class= "container" style= "border-radius: 25px; background-color: #ff8428; color: #ffffff; padding: 2em;">
+  <div class= "row">
+    <td> Starting Station Name: <%= @rental.checkout_station.name %></td>
+  </div>
+
+  <div class= "row">
+    <%if @rental.return != nil %>
+      <td>Ending Station Name: <%= @rental.return_station.name %></td>
+    <%end%>
+  </div>
+
+  <div class= "row">
+    <td> Bike id: <%= @rental.bike_id %></td>
+  </div>
+
+  <div class= "row">
+    <td>Start Time: <%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td>
+  </div>
+
+  <div class= "row">
+    <td>Rental Code: <%= @rental.number %></td>
+  </div>
+    
+   <%if @rental.return != nil %>
+    <div class= "row">
+        <td><%= (@rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
+    </div>
+
+    <div class= "row">
+      <td>Rental Duration: <%= @rental.duration %> minutes </td>
+    </div>  
+
+    <div class= "row">
+      <td>Ride Cost: $<%= number_with_precision(@rental.cost, precision: 2) %></td>
+    </div>
+
+    <% else %>
+      <td class="actions">
+        <div class= "button" style= "padding: 1em; justify-content: center; margin-top:2em; margin-right:3em; margin-left:3em;">
+          <td><%= link_to("Return Bike", edit_rental_path(@rental), class: 'action edit') %></td>
+        </div>
+      </td>
+    <%end%>
+</div>

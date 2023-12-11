@@ -1,26 +1,41 @@
-<div class= "gen-container">
-  <div id= "general">
-    <div class="page-section flexbox vertical stretch">
-      <div class="section-inner flexbox vertical stretch">
-        <div class="section-title flexbox horizontal center" style = "text-align: center">
-          <div class="rental new">
-            <h2>Rent a bike</h2>
-            <p>Station Name: <%=@station.name%>
-            Station Address: <%=@station.address%></p>
-          </div> 
-        </div>
-      </div>
-    </div>
+<div class= "check-container">
 
+<div id= "desc">
+  <div class="page-section flexbox vertical stretch">
+    <div class="section-inner flexbox vertical stretch">
+      <div class="section-title flexbox horizontal center" style = "text-align: center; margin-top: 3em;">
+          <h2>Confirm Your Bike Rental</h2>
+      </div>
+          <h2>Selected Station: <%=@station.name%></h2>
+          <h2>Station Address: <%=@station.address%> </h2>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id= "bikeimg" style= "max-width:350px; position: static; margin-top: 2em; margin-left: 9em;">
+  <%= image_tag('unlock bike 2.png') %>
+</div>
+
+
+<div id= "rdesc">
+  <div class="page-section flexbox vertical stretch">
+    <div class="section-inner flexbox vertical stretch">
+      <div class="section-title flexbox horizontal center" style = "text-align: center">
+        <h1 style= "margin-top: 1em;">Ready to Ride? Click the button below to get your code!</h1>
+      </div>
     <%= form_for (@rental), url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
-    
-      <div class="form-buttons">
+      <div class="button" style = "margin: 2em; font-size: 20px">
         <%= form.submit "Rent now!" %>
       </div>
-
-    <% end %>
-
+      <% end %>
+    </div>
   </div>
+</div>
+</div>
+
 </div>
 
     
