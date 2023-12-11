@@ -30,26 +30,24 @@
 
   .centered {
     top: 13%;
-    left: 70%;
+    left: 44%;
     transform: translate(-50%, -50%);
     text-align: right;
   }
 
   .centered img {
-    max-width: 600px;
-    max-height: 600px;
-    margin: 0;
-    padding: 0;
-    border: 0;
+    position: absolute;
+    max-width: 700px;
+    max-height: 700px;
   }
 
   .faq-content {
     display: none;
-
   }
 
   .dropdown {
     display: block;
+    margin-top: 2%;
   }
 
   .dropdown-content {
@@ -75,7 +73,7 @@
     padding: 10px;
     text-decoration: none;
     color: #333; 
-    transition: background-color 0.3s; /* Smooth transition on hover */
+    transition: background-color 0.3s;
   }
 
   .dropdown-content a:hover {
@@ -83,23 +81,16 @@
     background-color: #a2e1a1; 
   }
 
-  .green-button {
-  display: none; /* Hide the button */
-}
 
   .faq-question{
     font-weight: bold;
   }
 
-  .green-button:hover {
-    background-color: #45a049; 
-  }
-
   .h2 {
   font-weight: bold;
-  color: #2c632e; /* Green color */
-  font-size: 20px; /* Adjust the font size as needed */
-  margin-bottom: 10px; /* Add some bottom margin for spacing */
+  color: #2c632e; 
+  font-size: 20px; 
+  margin-bottom: 10px; 
   }
 
 </style>
@@ -112,16 +103,17 @@
     <div class="page-section flexbox vertical stretch">
       <div class="section-inner flexbox vertical stretch" style="margin-right: 5em; margin-left: 5em;">
         <div class="section-title flexbox horizontal center">
-          <h1>Meet the ClemenTeam</h1>
+          <h1 style = "margin-top: 10%">Meet the ClemenTeam</h1>
         </div>
-        <p>We are a team of five dedicated computer science students, class of 2025, passionate about contributing to the progress and well-being of our city's population. Through hard work and innovation, we have created a bike renting website that provides an affordable and convenient solution for people in the valley to get around. Our commitment to sustainable transportation aims to make a positive impact on both the community and the environment.</p>
+        <p>Five dedicated computer science students, class of 2025, passionate about contributing to the progress and well-being of our city's population. Through hard work and innovation, we have created a bike renting website that provides an affordable and convenient solution for people in the valley to get around. Our commitment to sustainable transportation aims to make a positive impact on both the community and the environment.</p>
       </div>
+    </div>
     </div>
   
     <div id = "img">
-      <div class="centered">
-        <%= image_tag('clementeam.png') %>
-      </div>
+          <div class="centered">
+           <%= image_tag('team.png') %>
+          </div>
     </div>
 
     <div id = "faq">
@@ -150,24 +142,24 @@
                 </div>
             <a href="#" class="faq-question" >What do I do if the station I return my bike to is full?</a>
                 <div class="faq-content">
-                    We accept major credit cards and debit cards as forms of payment.
+                  Simply engage the lock-in-place kickstand. Your bike will be secure there until one of our crew members comes by to move it to a different station or add it to that station.
                 </div>
             <a href="#" class="faq-question" >Can I schedule my rental ahead of time?</a>
                 <div class="faq-content">
-                    We accept major credit cards and debit cards as forms of payment.
+                    Not at the moment. This is a feature we're currently working on.
                 </div>
             <a href="#" class="faq-question" >What if my rental code is not working?</a>
                 <div class="faq-content">
-                    We accept major credit cards and debit cards as forms of payment.
+                    Make sure you are typing the code correctly. If it doesn't work please contact our help team at (121) 234-5353
                 </div>
             <a href="#" class="faq-question" >Will I be charged even if I'm not riding the bike?</a>
                 <div class="faq-content">
-                    We accept major credit cards and debit cards as forms of payment.
+                    Yes. The timer for the payment starts once you unlock your bike. 
                 </div>
           </div>
         </div>
       </div>
-    </div>
+
 
 
 <script>
