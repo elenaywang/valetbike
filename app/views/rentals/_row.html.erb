@@ -18,10 +18,6 @@
     <td> <div class = "bold-brown"> Start Time: </div><%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td>
   </div>
 
-  <div class= "row">
-    <td> <div class = "bold-brown"> Rental Code: </div> <%= @rental.number %></td>
-  </div>
-    
    <%if @rental.return != nil %>
     <div class= "row">
         <td> <div class = "bold-brown"> End time: </div><%= (@rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
