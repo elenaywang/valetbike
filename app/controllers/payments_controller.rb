@@ -1,44 +1,37 @@
 class PaymentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :check_user, only: [:new, :show, :edit]
-    before_action :check_payment, only: [:show, :edit]
-    #validators for form input here
+    before_action :check_user, only: [:new, :create, :edit, :update]
+    before_action :check_existing_payment, only: [:new, :create]
+    before_action :check_payment_id, only: [:edit, :update]
+    
+    def index
+        @user = current_user
+        @payment = Payment.new
+        render :new
+        #temporary workaround to keep users on the new form in case they reload the page
+    end
 
-    # def index
-    #     @payment = Payment.order(:first_name)
-    # end
-
-    # def show
-    #     #@user = current_user
-    #     @payment = Payment.find_by(user_id: current_user.id)
-    # end
+    def show
+        @user = current_user
+        @payment = Payment.find_by(user_id: current_user.id)
+        render :edit
+        #temporary workaround to keep users on the edit form in case they reload the page
+    end
 
     def new
         @user = current_user
-        if @user.payment_id.blank?
-            @user = current_user
-            @payment = Payment.new
-        else
-            redirect_to edit_user_payment_path(id: current_user.payment_id)
-        end
-
+        @payment = Payment.new
     end
 
     def create
         @user = current_user
-        if @user.payment_id.blank? 
-            @payment = Payment.new(payment_params) 
-            @payment.user = @user
-                if @payment.save                        
-                    flash.notice = "Payment information saved"
-                    @user.payment = @payment
-                    redirect_to user_payments_path
-                else
-                    flash.alert = "Unable to save payment information. Please ensure all information is valid."
-                    redirect_to new_user_payment_path
-                end
+        @payment = Payment.new(payment_params)
+        @payment.user = @user
+        if @payment.save
+            flash.notice = "Payment information saved"
+            redirect_to profile_home_index_path
         else
-            redirect_to user_payment_path
+            render(action: :new)
         end
     end
 
@@ -50,28 +43,37 @@ class PaymentsController < ApplicationController
     def update
         @user = current_user
         @payment = Payment.find_by(user_id: current_user.id)
-        if @payment.update(payment_params)
+        if @payment.update(payment_params) && @payment.valid?
             flash.notice = "Payment information updated"
-            redirect_to user_payments_path
-        else
-            flash.alert = "Unable to update payment information. Please ensure all information is valid."
-            redirect_to edit_user_payment_path
+            redirect_to profile_home_index_path
+        else  
+            render :edit
         end
     end
 
     def check_user
         if current_user.id != params[:user_id].to_i
-            redirect_to user_payments_path(current_user)
-            #redirect_to profile_home_index_path
-            #change this redirect to take you back to profile editing page
+            flash.alert = "Unable to access requested resource. Check for proper URL."
+            redirect_to profile_home_index_path
         end
     end
     
-    def check_payment
-        if current_user.payment_id != params[:id].to_i
-            redirect_to user_payments_path(current_user)
-            #redirect_to profile_home_index_path
-            #change redirect to take you back to profile
+
+    def check_payment_id
+        @user = current_user
+        if @user.payment.id != params[:id].to_i
+            flash.alert = "Unable to access requested resource. Check for proper URL."
+            redirect_to profile_home_index_path
+        end
+    end
+
+        
+
+    def check_existing_payment
+        @user = current_user
+        @payment = Payment.find_by(user_id: @user)
+        if @payment.present?
+            redirect_to edit_user_payment_path(user_id: @user, id: @payment) and return true
         end
     end
 

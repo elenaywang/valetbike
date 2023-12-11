@@ -54,15 +54,27 @@ header::after {
 }
 
 .about-container {
-  display: grid;
+   display: grid;
   min-height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: .8fr .5fr .2fr 1.5fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
   grid-template-areas:
   "text text img img" 
   "faq faq faq faq"
 }
- 
+
+.profile-container {
+  display: grid;
+  min-height: 80vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "photo photo"
+  "name name"
+  "background-photo background-photo background-photo background-photo"
+}
+
+
 footer {
   grid-row: 3;
   bottom: 0;
@@ -93,6 +105,24 @@ footer ul{
   color: #2a5c25;
   padding: 3em 1em 3em 1em;
   flex: 1;
+}
+
+.profile-column{
+  z-index: 2;
+  border-radius: 25px;
+  border-color: #cfad47;
+  border-width: thick;
+  background-color: #ffffff;
+  color: #69b962;
+  padding: 3em 1em 3em 1em;
+  width: 25%;
+  margin-left: 870px;
+}
+
+.profile-row {
+  display: block;
+  position: static;
+  margin-bottom: 170px;
 }
 
 .column h1{
