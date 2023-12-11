@@ -1,18 +1,13 @@
-<html>
-<head>
-<style>
-body{
-  background-color: #ffffff;
-}
-
-</style>
-</head>
-<body>
+<div id="background-photo">
+  <div class="back-picture">
+    <%= image_tag('bicicleta_2.gif') %>
+  </div> 
+</div>
 
 <div class= "gen-container">
 <div id= "general">
  <div class="page-section flexbox vertical stretch">
-     <div class="section-inner flexbox vertical stretch">
+     <div class="section-inner flexbox vertical stretch" style = "background-color: #ffffff">
 
           <div class="section-title flexbox horizontal center" style = "text-align: center; margin-top: 1em;">
             Our Sweet Pricing Option!
@@ -24,9 +19,14 @@ body{
                     <p>Unlike other expensive bike services we want our rides to be affordable. So, ride as long as you like, cause it will only cost you   </p>
           
            <h1 class="font-bold text-4xl">$0.05/minute</h1>
-           <div id= "bikeimg" style= "max-width: 400px; position: static; margin: auto;">
-           <%= image_tag('naranja.gif') %>
-           </div>
+               
+               <div style= "max-width: 140px; position: absolute; margin-left: 59%; margin-bottom: 10%;">
+                    <%= image_tag('naranja.gif') %>
+               </div>
+
+               <div style= "max-width: 140px; position: static; margin-left: 10%">
+                    <%= image_tag('naranja.gif') %>
+               </div>
            <p>Are you ready to ride? Click the button below to start! </p>
            <%= link_to('Start Now', map_home_index_path, class: 'button') %>
            </div>

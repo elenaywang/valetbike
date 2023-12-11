@@ -7,12 +7,9 @@
     padding: 8px;
 }
 
-.button form:hover {
-    background-color: #405c26;
-}
-
-.button a:hover {
-    background-color: #405c26;
+.button:hover {
+    background-color: #2a3f17;
+    transition: background-color 0.3s;
 }
 
 .rent-button{
@@ -48,6 +45,22 @@
 .profile-button:hover {
     background-color: #426521;
     border-radius: 10%;
+    transition: background-color 0.3s;
+}
+
+.back-button{
+    display: block;
+    color: white;
+    border-radius: 5%;
+    background-color: #476d24;
+    text-align: center;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.back-button:hover {
+    border-radius: 20%;
     transition: background-color 0.3s;
 }
 
