@@ -10,6 +10,5 @@ class Rental < ApplicationRecord
           (self.return - self.checkout).div(60)   # Returns duration in minutes
         end
     end
-
     
 end

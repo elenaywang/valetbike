@@ -10,7 +10,7 @@
         <%= link_to("Rent a bike", new_station_rental_path(station)) %>
       </div>
       <div style = "font-style: italic; color: #58783a">
-        <%= station.docked_bikes.count %> bike(s) available
+        <%= pluralize(station.docked_bikes.count, 'bike') %> available
       </div>
     </li>
   </ul>
