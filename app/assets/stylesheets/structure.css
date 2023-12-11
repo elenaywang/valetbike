@@ -18,6 +18,14 @@ header {
     margin-top: 40px;
 }
 
+.button form:hover {
+    background-color: #59882d;
+}
+
+.button a:hover {
+    background-color: #59882d;
+}
+
 .profile-button{
     display: block;
     color: white;
@@ -35,14 +43,24 @@ header {
     transition: background-color 0.3s;
 }
 
-
-.button form:hover {
-    background-color: #59882d;
+.pricing-button{
+    display: block;
+    color: white;
+    border-radius: 10%;
+    background-color: #baad3c;
+    text-align: center;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
 }
 
-.button a:hover {
-    background-color: #59882d;
+.pricing-button:hover {
+    background-color: #655a21;
+    border-radius: 10%;
+    transition: background-color 0.3s;
 }
+
+
  
 
 .container{
