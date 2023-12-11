@@ -1,4 +1,3 @@
-
 <div id="background-photo">
   <div class="back-picture">
     <%= image_tag('backg_2.png') %>
@@ -27,9 +26,7 @@
 
                     <% if user_signed_in? %>
                           <%= link_to "Edit My Info", edit_user_registration_path, class: 'profile-button' %>
-                        <% unless current_user.payment_id.nil? %>
-                          <%= link_to "Edit Payment", edit_user_payment_path(id: current_user.payment_id, user_id: current_user.id), class: 'profile-button' %>
-                        <% end %>
+                          <%= link_to "Edit Payment", new_user_payment_path(current_user), class: 'profile-button' %>
                           <%= link_to "My Rentals", rentals_path, class: 'profile-button' %>
                         <% unless current_user.rentals.where(return: nil).empty? %>
                           <%= link_to "Current rental", rental_path(@active_rental.id), class: 'profile-button' %>
@@ -42,5 +39,3 @@
    </div>
   </div>
 </div>
-   
-

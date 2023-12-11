@@ -97,7 +97,7 @@ class PaymentsController < ApplicationController
         @user = current_user
         @payment = Payment.find_by(user_id: @user)
         if @payment.present?
-            redirect_to edit_user_payment_path(id: @user) and return true
+            redirect_to edit_user_payment_path(user_id: @user, id: @payment) and return true
         end
     end
 
