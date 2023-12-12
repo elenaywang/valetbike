@@ -15,7 +15,7 @@ class Payment < ApplicationRecord
       false
     elsif exp_year == Time.current.year && exp_month.to_i >= Time.current.month
       true
-    elsif exp_year > Time.current.year && exp_month.present?
+    elsif exp_year > Time.current.year
       true
     else
       errors.add(:base, "Invalid expiry date")

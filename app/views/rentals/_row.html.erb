@@ -1,39 +1,38 @@
 
-
-<div class= "container" style= "border-radius: 25px; background-color: #ff8428; color: #ffffff; padding: 2em;">
+<div class= "container" style= "border-radius: 25px; background-color: #D7892B ; color: #ffffff; padding: 2em; margin-bottom: 5%;">
   <div class= "row">
-    <td> Starting Station Name: <%= @rental.checkout_station.name %></td>
+    <td> <div class = "bold-brown">Starting Station Name:   </div> <%= @rental.checkout_station.name %></td>
   </div>
 
   <div class= "row">
     <%if @rental.return != nil %>
-      <td>Ending Station Name: <%= @rental.return_station.name %></td>
+      <td> <div class = "bold-brown"> Ending Station Name:   </div> <%= @rental.return_station.name %></td>
     <%end%>
   </div>
 
   <div class= "row">
-    <td> Bike id: <%= @rental.bike_id %></td>
+    <td> <div class = "bold-brown"> Bike id: </div> <%= @rental.bike_id %></td>
   </div>
 
   <div class= "row">
-    <td>Start Time: <%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td>
+    <td> <div class = "bold-brown"> Start Time: </div><%= (@rental.checkout).strftime("%A %m/%d/%Y %I:%M %p")%></td>
   </div>
 
   <div class= "row">
-    <td>Rental Code: <%= @rental.number %></td>
+    <td> <div class = "bold-brown"> Rental Code: </div> <%= @rental.number %></td>
   </div>
     
    <%if @rental.return != nil %>
     <div class= "row">
-        <td>End Time: <%= (@rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
+        <td> <div class = "bold-brown"> End time: </div><%= (@rental.return).strftime("%A %m/%d/%Y %I:%M %p")%></td>
     </div>
 
     <div class= "row">
-      <td>Rental Duration: <%= @rental.duration %> minutes </td>
+      <td> <div class = "bold-brown"> Rental Duration: </div> <%= @rental.duration %> minutes </td>
     </div>  
 
     <div class= "row">
-      <td>Ride Cost: $<%= number_with_precision(@rental.cost, precision: 2) %></td>
+      <td> <div class = "bold-brown"> Ride Cost: </div> $<%= number_with_precision(@rental.cost, precision: 2) %></td>
     </div>
 
     <% else %>

@@ -94,9 +94,9 @@
   align-items: right;
   justify-content: right;
   border-radius: 50%;
-  width: 90px; /* Set your desired width */
-  height: 90px; /* Set your desired height */
-  border: 4px solid #fff; /* Optional: Add a border to the profile picture */
+  width: 90px; 
+  height: 90px; 
+  border: 4px solid #fff; 
   z-index: 2;
   left: 50px;
 }
@@ -104,15 +104,14 @@
 .back-picture img {
   align-items: center;
   justify-content: center;
-  width: 230vh; /* Set your desired width */
-  height: 100vh; /* Set your desired height */
+  width: 230vh; 
+  height: 100vh; 
   z-index: 1;
 }
 
 .profile-info h2 {
   margin: 0;
 }
-
 
 .centered {
   position: absolute;
@@ -135,5 +134,24 @@
   max-height: 500px;
   position: static;
   margin: auto;
+}
 
+.bold-brown{
+  font-weight: bold;
+  color: #134213;
+}
+
+#reg{
+  color: #2a5c25;
+  grid-area: reg;
+}
+
+#pay{
+  color: #2a5c25;
+  grid-area: pay;
+}
+
+#code{
+  color: #2a5c25;
+  grid-area: gen;
 }

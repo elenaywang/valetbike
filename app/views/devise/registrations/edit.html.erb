@@ -5,13 +5,16 @@
 </div>
 
 
-<div class= "gen-container">
+
+
+<div class= "register-container">
+<div id= "reg">
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="container">
     <div class= "centered">
-      <div class="row" >
-      <div class="column" style= "border-color: #78a350; border-width: thick; padding: .5em;">
+      <div class="register-row" >
+      <div class="register-column" style= "border-color: #78a350; border-width: thick; padding: .5em;">
           <div class="section-title flexbox horizontal center">
           <h2>Edit <%= resource_name.to_s.humanize %> Profile</h2>
           </div>
@@ -62,15 +65,15 @@
             
             
                 <div class="actions">
-                 <%= f.submit "Update" %>
-              </div>
-            <% end %>
+                  <%= f.submit "Update", class: 'back-button'%>
+              <% end %>
             
-            <div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-            <div class= "button">
-            <%= link_to "Back", :back %>
-          </div>  
-             
+            <div>
+              <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'back-button'%>
+            </div>
+       
+            <%= link_to "Back", :back , class: 'back-button'%>
+          
         </div>
      
     </div>

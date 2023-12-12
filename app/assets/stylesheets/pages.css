@@ -3,201 +3,253 @@
 /************************************/
 
 header {
-    background: #ff873c;
-    grid-row: 1;
-  }
-  
-  header::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-  
-  .home-container{
-    display: grid;
-    min-height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: .2fr .5fr .2fr 1fr;
-    grid-template-areas:
-    "welcome welcome bikeimg bikeimg" 
-    "howto howto howto howto"
-    "desc desc desc desc"
-    "map map map map"
-   
-  }
-  
-  .map-container{
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: .5fr .5fr;
-    grid-template-areas:
-    "mapSidebar desc desc desc" 
-    "mapSidebar map map map"
-  
-  }
-  
-  .reglog-container{
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-    "reglog reglog reglog reglog" 
-  }
-  
-  .gen-container{
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-    "gen gen gen gen" 
-  }
-  
-  .about-container {
-    display: grid;
-   min-height: 100vh;
-   grid-template-columns: 1fr 1fr 1fr 1fr;
-   grid-template-rows: .3fr .5fr .2fr 1fr;
-   grid-template-areas:
-   "text text img img" 
-   "faq faq faq faq"
- }
-   
-  .pay-container{
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows:  1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "first first first last last last" 
-        "mon mon year year cvv cvv"
-        "num num num num num num"  
-  }
-  
-  .check-container{
-    display: grid;
-    min-height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-    "bikeimg bikeimg desc desc" 
-    "rdesc rdesc rdesc rdesc" 
-  }
-  .profile-container {
-    display: grid;
-    min-height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: .3fr .5fr .2fr 1fr;
-    grid-template-areas:
-    "photo photo"
-    "name name"
-    "background-photo background-photo background-photo background-photo"
-  }
-  
-  footer {
-    grid-row: 3;
-    bottom: 0;
-    width: 100%;
-    padding: 3em;
-    background: #ff873c;
-  }
-  
-  footer ul{
-    float: right;
-    color: white;
-  }
-  
-  .container{
-    margin: 0 auto;
-    justify-content: space-between;
-  }
-  
-  .row {
-    display: flex;
-    text-align: center;
-  }
-  
-  .column{
-    border-radius: 25px;
-    background-color: #ffffff;
-    color: #2a5c25;
-    flex: 1;
-  }
-  
+  background: #ff873c;
+  grid-row: 1;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.home-container{
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .2fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "welcome welcome bikeimg bikeimg" 
+  "howto howto howto howto"
+  "desc desc desc desc"
+  "map map map map"
+ 
+}
+
+.map-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .5fr .5fr;
+  grid-template-areas:
+  "mapSidebar desc desc desc" 
+  "mapSidebar map map map"
+
+}
+
+.reglog-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "reglog reglog reglog reglog" 
+}
+
+.gen-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "gen gen gen gen" 
+}
+
+.about-container {
+  display: grid;
+ min-height: 100vh;
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ grid-template-rows: .3fr .5fr .2fr 1fr;
+ grid-template-areas:
+ "text text img img" 
+ "faq faq faq faq"
+}
+ 
+.pay-container{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows:  1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+      "first first first last last last" 
+      "mon mon year year cvv cvv"
+      "num num num num num num"  
+}
+
+.check-container{
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "bikeimg bikeimg desc desc" 
+  "rdesc rdesc rdesc rdesc" 
+}
+.profile-container {
+  display: grid;
+  min-height: 90vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "photo photo"
+  "name name"
+  "background-photo background-photo background-photo background-photo"
+}
+
+footer {
+  grid-row: 3;
+  bottom: 0;
+  width: 100%;
+  padding: 3em;
+  background: #ff873c;
+}
+
+footer ul{
+  float: right;
+  color: white;
+}
+
+.container{
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  text-align: center;
+}
+
+.column{
+  border-radius: 25px;
+  background-color: #ffffff;
+  color: #2a5c25;
+  flex: 1;
+}
+
+
 .profile-column{
-    z-index: 2;
-    border-radius: 25px;
-    border-color: #cfad47;
-    border-width: thick;
-    background-color: #ffffff;
-    color: #69b962;
-    padding: 3em 1em 3em 1em;
-    width: 25%;
-    margin-left: 870px;
-  }
-  
-  .profile-row {
-    display: block;
-    position: static;
-    margin-bottom: 170px;
-  }
-  
-  .column h1{
-    text-align: center;
-    font-size: 2em;
-  }
-  
-  .logo{
-    float: left;
-    padding: 1em;
-  }
-  
+  z-index: 2;
+  border-radius: 25px;
+  border-color: #cfad47;
+  border-width: thick;
+  background-color: #ffffff;
+  color: #69b962;
+  padding: 3em 1em 3em 1em;
+  width: 25%;
+  margin-left: 870px;
+}
+
+.profile-row {
+  display: block;
+  position: static;
+  margin-bottom: 170px;
+}
+
+.register-container {
+  display: grid;
+  min-height: 160vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "reg reg reg reg"
+}
+
+
+.register-column{
+  border-radius: 25px;
+  background-color: #ffffff;
+  color: #2a5c25;
+  flex: 1;
+}
+
+.register-row {
+  display: flex;
+  text-align: center;
+}
+
+.payment-container {
+  display: grid;
+  min-height: 120vh;
+  max-height: 130vh;
+  min-width: 120vh;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "pay pay pay pay"
+}
+
+.payment-column{
+  border-radius: 25px;
+  background-color: #ffffff;
+  margin-left: 7px;
+  color: #2a5c25;
+  flex: 1;
+}
+
+.code-container {
+  display: grid;
+  min-height: 90vh;
+  max-width: 120vh;
+  background-color: white;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .3fr .5fr .2fr 1fr;
+  grid-template-areas:
+  "code code code code"
+}
+
+.column h1{
+  text-align: center;
+  font-size: 2em;
+}
+
+.logo{
+  float: left;
+  padding: 1em;
+}
+
+.page-section {
+  max-width: 100em;
+  width: 100%;
+}
+
+.page-section .section-inner {
+  margin-right: 1.4em;
+  margin-left: 1.4em;
+}
+
+.page-section .section-title {
+  font-family: var(--title-font);
+  font-weight: 500;
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  justify-content: center;
+}
+
+.record-row {
+  padding: 0.5em 1.25em 0.5em 1.25em;
+  font-size: 0.85em;
+  line-height: 1.75em;
+}
+
+.record-row.even {
+  background: var(--medium-white-color);
+}
+
+.record-row.odd {
+  background: var(--dark-white-color);
+}
+
+
+
+/***********************************/
+/*         Responsiveness          */
+/***********************************/
+
+@media (max-width:48em) {
   .page-section {
-    max-width: 100em;
-    width: 100%;
+    margin-top: 3em;
   }
-  
-  .page-section .section-inner {
-    margin-right: 1.4em;
-    margin-left: 1.4em;
-  }
-  
+
   .page-section .section-title {
-    font-family: var(--title-font);
-    font-weight: 500;
-    font-size: 2.5em;
-    margin-bottom: 1em;
-    justify-content: center;
+    font-size: 1.9em;
+    margin-bottom: .6em;
   }
-  
-  .record-row {
-    padding: 0.5em 1.25em 0.5em 1.25em;
-    font-size: 0.85em;
-    line-height: 1.75em;
-  }
-  
-  .record-row.even {
-    background: var(--medium-white-color);
-  }
-  
-  .record-row.odd {
-    background: var(--dark-white-color);
-  }
-  
-  
-  
-  /***********************************/
-  /*         Responsiveness          */
-  /***********************************/
-  
-  @media (max-width:48em) {
-    .page-section {
-      margin-top: 3em;
-    }
-  
-    .page-section .section-title {
-      font-size: 1.9em;
-      margin-bottom: .6em;
-    }
-  
-  }
-  
+
+}
