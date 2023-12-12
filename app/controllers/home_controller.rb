@@ -11,12 +11,11 @@ class HomeController < ApplicationController
     end
   
     def map
-      @stations = Station.all.order(identifier: :asc)
-
-      respond_to do |format|
-        format.html
-        format.json {render json: @stations }
-      end 
+      if params[:station].present?
+        @stations = Station.near(params[:station])
+      else
+        @stations = Station.all.order(identifier: :asc)
+      end
     end
   
     def pricing
