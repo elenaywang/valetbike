@@ -12,6 +12,9 @@
         <% else %>
           <p style= "margin-bottom: 3em;"> Ready to ride? View the station locations in the map below, and select a station from the sidebar to rent a bike!</p>
         <% end %>
+        <% if user_signed_in? %>
+          <%= link_to "Past Rentals", rentals_path, class: 'button' %>
+        <% end %>
     </div>
   </div>
   
