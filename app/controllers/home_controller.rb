@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: [:profile]
 
     before_action :set_active_rental, only: [:map, :profile]    # defines a user's currently active rental if they have one
     
