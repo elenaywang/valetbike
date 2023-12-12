@@ -29,14 +29,14 @@
 
 
 #text {
-  background-color: #0b6401;
+  background-color: #5c803c;
   color: #ffffff;
   top: 15%;
   grid-area: text;
 }
 
 #img {
-  background-color: #0b6401;
+  background-color: #5c803c;
   top: 50%;
   grid-area: img;
 }
